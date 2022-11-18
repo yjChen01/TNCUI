@@ -1,0 +1,42 @@
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>job_id</th>
+        <th>job_type</th>
+        <th>bin_id</th>
+        <th>class_id</th>
+        <th>priority</th>
+        <th>from_coord</th>
+        <th>from_action</th>
+        <th>to_coord</th>
+        <th>to_action</th>
+        <th>state</th>
+        <th>user_id</th>
+        <th>message</th>
+        <th>update_date</th>
+        <th>create_date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <pre>{{ data | json }}</pre > -->
+      <tr *ngFor="let item of data; let i=index">
+        <td>{{item.job_id}}</td>
+        <td>{{item.job_type}}</td>
+        <td>{{item.bin_id}}</td>
+        <td>{{item.class_id}}</td>
+        <td>{{item.priority}}</td>
+        <td>{{item.from_coord}}</td>
+        <td>{{item.from_action}}</td>
+        <td>{{item.to_coord}}</td>
+        <td>{{item.to_action}}</td>
+        <td>{{item.state}}</td>
+        <td>{{item.user_id}}</td>
+        <td>{{item.message}}</td>
+        <td>{{item.update_date}}</td>
+        <td>{{item.create_date}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

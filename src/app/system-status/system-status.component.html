@@ -1,0 +1,301 @@
+<div class="container-fluid mt-3">
+
+  <div>
+      <button class="btn btn-ia-blue" style="width: 130px;
+      font-size: 20px;
+      font-weight: 700;">開始</button>
+  </div>
+
+  <div class="card shadow mb-4 mt-2">
+      <!-- Card Header - Accordion -->
+      <a href="#ShuttleCard" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+        <h6 class="m-0 font-weight-bold ia-subtitle">Shuttle</h6>
+      </a>
+      <!-- Card Content - Collapse -->
+      <div class="collapse show" id="ShuttleCard">
+          <div class="card-body">
+              <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>名稱</th>
+                      <th>狀態</th>
+                      <th>座標</th>
+                      <th>當前任務</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="ia-offline-shuttle">
+                      <td>A0</td>
+                      <td>未連接</td>
+                      <td>(1,10,1)</td>
+                      <td>18430428-C750-4E33-9306-686A9D5191F3</td>
+                      <td>
+                          <div class="form-row">
+                              <div class="form-group col-md-7">
+                                  <select class="form-control">
+                                    <option value="1">自動模式</option>
+                                    <option value="2">手動模式</option>
+                                    <option value="3">移至充電站</option>
+                                    <option value="4">移動至別層</option>
+                                  </select>
+                              </div>
+                              <div class="col-md-5">
+                                  <button type="button" class="btn btn-ia-blue" onclick="Execute()">執行</button>
+                              </div>
+                          </div>
+                      </td>
+                    </tr>
+                    <tr class="ia-repair-shuttle">
+                      <td>A1</td>
+                      <td>維修</td>
+                      <td>(1,10,1)</td>
+                      <td>18430428-C750-4E33-9306-686A9D5191F3</td>
+                      <td>
+                          <div class="form-row">
+                              <div class="form-group col-md-7">
+                                  <select class="form-control">
+                                    <option>自動模式</option>
+                                    <option>手動模式</option>
+                                    <option>移至充電站</option>
+                                    <option>移動至別層</option>
+                                  </select>
+                              </div>
+                              <div class="col-md-5">
+                                  <button type="button" class="btn btn-ia-blue">執行</button>
+                              </div>
+                          </div>
+                      </td>
+                    </tr>
+                    <tr class="ia-idle-shuttle">
+                      <td>A2</td>
+                      <td>閒置</td>
+                      <td>(1,10,1)</td>
+                      <td>18430428-C750-4E33-9306-686A9D5191F3</td>
+                      <td>
+                          <div class="form-row">
+                              <div class="form-group col-md-7">
+                                  <select class="form-control">
+                                    <option>自動模式</option>
+                                    <option>手動模式</option>
+                                    <option>移至充電站</option>
+                                    <option>移動至別層</option>
+                                  </select>
+                              </div>
+                              <div class="col-md-5">
+                                  <button type="button" class="btn btn-ia-blue">執行</button>
+                              </div>
+                          </div>
+                      </td>
+                    </tr>
+                    <tr class="ia-busy-shuttle">
+                      <td>A3</td>
+                      <td>任務</td>
+                      <td>(1,10,1)</td>
+                      <td>18430428-C750-4E33-9306-686A9D5191F3</td>
+                      <td>
+                          <div class="form-row">
+                              <div class="form-group col-md-7">
+                                  <select class="form-control">
+                                    <option>自動模式</option>
+                                    <option>手動模式</option>
+                                    <option>移至充電站</option>
+                                    <option>移動至別層</option>
+                                  </select>
+                              </div>
+                              <div class="col-md-5">
+                                  <button type="button" class="btn btn-ia-blue">執行</button>
+                              </div>
+                          </div>
+                      </td>
+                    </tr>
+                    <tr class="ia-error-shuttle">
+                      <td>A4</td>
+                      <td>異常</td>
+                      <td>(1,10,1)</td>
+                      <td>18430428-C750-4E33-9306-686A9D5191F3</td>
+                      <td>
+                          <div class="form-row">
+                              <div class="form-group col-md-7">
+                                  <select class="form-control">
+                                    <option>自動模式</option>
+                                    <option>手動模式</option>
+                                    <option>移至充電站</option>
+                                    <option>移動至別層</option>
+                                  </select>
+                              </div>
+                              <div class="col-md-5">
+                                  <button type="button" class="btn btn-ia-blue">執行</button>
+                              </div>
+                          </div>
+                      </td>
+                    </tr>
+                    <tr class="ia-offline-shuttle">
+                      <td>A5</td>
+                      <td>未連接</td>
+                      <td>(1,10,1)</td>
+                      <td>18430428-C750-4E33-9306-686A9D5191F3</td>
+                      <td>
+                          <div class="form-row">
+                              <div class="form-group col-md-7">
+                                  <select class="form-control">
+                                    <option>自動模式</option>
+                                    <option>手動模式</option>
+                                    <option>移至充電站</option>
+                                    <option>移動至別層</option>
+                                  </select>
+                              </div>
+                              <div class="col-md-5">
+                                  <button type="button" class="btn btn-ia-blue">執行</button>
+                              </div>
+                          </div>
+                      </td>
+                    </tr>
+                    <tr class="ia-offline-shuttle">
+                      <td>A6</td>
+                      <td>未連接</td>
+                      <td>(1,10,1)</td>
+                      <td>18430428-C750-4E33-9306-686A9D5191F3</td>
+                      <td>
+                          <div class="form-row">
+                              <div class="form-group col-md-7">
+                                  <select class="form-control">
+                                    <option>自動模式</option>
+                                    <option>手動模式</option>
+                                    <option>移至充電站</option>
+                                    <option>移動至別層</option>
+                                  </select>
+                              </div>
+                              <div class="col-md-5">
+                                  <button type="button" class="btn btn-ia-blue">執行</button>
+                              </div>
+                          </div>
+                      </td>
+                    </tr>
+                    <tr class="ia-offline-shuttle">
+                      <td>A7</td>
+                      <td>未連接</td>
+                      <td>(1,10,1)</td>
+                      <td>18430428-C750-4E33-9306-686A9D5191F3</td>
+                      <td>
+                          <div class="form-row">
+                              <div class="form-group col-md-7">
+                                  <select class="form-control">
+                                    <option>自動模式</option>
+                                    <option>手動模式</option>
+                                    <option>移至充電站</option>
+                                    <option>移動至別層</option>
+                                  </select>
+                              </div>
+                              <div class="col-md-5">
+                                  <button type="button" class="btn btn-ia-blue">執行</button>
+                              </div>
+                          </div>
+                      </td>
+                    </tr>
+                    <tr class="ia-offline-shuttle">
+                      <td>A8</td>
+                      <td>未連接</td>
+                      <td>(1,10,1)</td>
+                      <td>18430428-C750-4E33-9306-686A9D5191F3</td>
+                      <td>
+                          <div class="form-row">
+                              <div class="form-group col-md-7">
+                                  <select class="form-control">
+                                    <option>自動模式</option>
+                                    <option>手動模式</option>
+                                    <option>移至充電站</option>
+                                    <option>移動至別層</option>
+                                  </select>
+                              </div>
+                              <div class="col-md-5">
+                                  <button type="button" class="btn btn-ia-blue">執行</button>
+                              </div>
+                          </div>
+                      </td>
+                    </tr>
+                    <tr class="ia-offline-shuttle">
+                      <td>A9</td>
+                      <td>未連接</td>
+                      <td>(1,10,1)</td>
+                      <td>18430428-C750-4E33-9306-686A9D5191F3</td>
+                      <td>
+                          <div class="form-row">
+                              <div class="form-group col-md-7">
+                                  <select class="form-control">
+                                    <option>自動模式</option>
+                                    <option>手動模式</option>
+                                    <option>移至充電站</option>
+                                    <option>移動至別層</option>
+                                  </select>
+                              </div>
+                              <div class="col-md-5">
+                                  <button type="button" class="btn btn-ia-blue">執行</button>
+                              </div>
+                          </div>
+                      </td>
+                    </tr>
+                    <tr class="ia-offline-shuttle">
+                      <td>A10</td>
+                      <td>未連接</td>
+                      <td>(1,10,1)</td>
+                      <td>18430428-C750-4E33-9306-686A9D5191F3</td>
+                      <td>
+                          <div class="form-row">
+                              <div class="form-group col-md-7">
+                                  <select class="form-control">
+                                    <option>自動模式</option>
+                                    <option>手動模式</option>
+                                    <option>移至充電站</option>
+                                    <option>移動至別層</option>
+                                  </select>
+                              </div>
+                              <div class="col-md-5">
+                                  <button type="button" class="btn btn-ia-blue">執行</button>
+                              </div>
+                          </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+          </div>
+      </div>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+<div class="modal-dialog">
+<div class="modal-content">
+
+  <!-- Modal Header -->
+  <div class="modal-header">
+    <h4 class="modal-title">Modal Heading</h4>
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+  </div>
+
+  <!-- Modal body -->
+  <div class="modal-body">
+    Modal body..
+  </div>
+
+  <!-- Modal footer -->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+  </div>
+
+</div>
+</div>
+</div>
+
+
+<script src="/assets/js/jquery-3.3.1.min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/jquery.sticky.js"></script>
+<script src="/assets/js/main.js"></script>
+<script>
+  function Execute(){
+
+  }
+</script>
