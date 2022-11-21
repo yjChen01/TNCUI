@@ -15,20 +15,22 @@ export class BillQueryComponent  {
 
   constructor(private http:HttpClient) {
     let headers = new HttpHeaders({
-      'Content-Type': 'text/json'
+      'Content-Type': 'application/json'
     });
     let options = {
       headers
     };
+
     let body={
       "page_no":this.page_no,
       "page_size":this.page_size,
-      "isAll":this.isAll,
-    }
-    http.post<any[]>('https://localhost:7285/GetAllBill', JSON.stringify(body)).subscribe(data_result=>{
+      "isAllData":this.isAll
+    };
+
+    http.post<any[]>('https://localhost:7285/GetAllBill', body, options).subscribe(data_result=>{
       this.data=data_result;
-      console.log(data_result);
-  })
+
+    })
   }
 
 

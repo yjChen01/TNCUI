@@ -1,1 +1,62 @@
-<p>plcstatus works!</p>
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
+      <tr class="tablehead">
+        <th>Equipment</th>
+        <th colspan="4">Status</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of (shuttles | keyvalue)">
+      <tr>
+        <td rowspan="8" class="tableEqname">{{item.key}}</td>
+        <td class="tableStatusname">is_disconnected</td>
+        <td>{{item.value.is_disconnected}}</td>
+        <td class="tableStatusname">row</td>
+        <td>{{item[i].row}}</td>
+      </tr>
+      <tr>
+        <td class="tableStatusname">is_heartbroken</td>
+        <td>資料單元格C</td>
+        <td class="tableStatusname">column</td>
+        <td>資料單元格C</td>
+      </tr>
+      <tr>
+        <td class="tableStatusname">is_idle</td>
+        <td>資料單元格D</td>
+        <td class="tableStatusname">layer</td>
+        <td>資料單元格D</td>
+      </tr>
+      <tr>
+        <td class="tableStatusname">is_auto</td>
+        <td>資料單元格E</td>
+        <td class="tableStatusname">is_charging</td>
+        <td>資料單元格E</td>
+      </tr>
+      <tr>
+        <td class="tableStatusname">is_error</td>
+        <td>資料單元格F</td>
+        <td class="tableStatusname">is_fully_charged</td>
+        <td>資料單元格F</td>
+      </tr>
+      <tr>
+        <td class="tableStatusname">task_id</td>
+        <td>資料單元格E</td>
+        <td class="tableStatusname"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="tableStatusname">task_name</td>
+        <td>資料單元格F</td>
+        <td class="tableStatusname"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="tableStatusname">task_param</td>
+        <td>資料單元格G</td>
+        <td class="tableStatusname"></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<pre>{{shuttles|json}}</pre>

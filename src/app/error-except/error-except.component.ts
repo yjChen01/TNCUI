@@ -8,11 +8,28 @@ import { Component } from '@angular/core';
 })
 export class ErrorExceptComponent  {
   data: any[]=[];
+  page_no=1;
+  page_size=10;
+  isAll=false;
+
   constructor(private http:HttpClient) {
-    http.post<any[]>('https://localhost:7285/GetAllBill', '').subscribe(data_result=>{
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    let options = {
+      headers
+    };
+
+    let body={
+      "page_no":this.page_no,
+      "page_size":this.page_size,
+      "isAllData":this.isAll
+    };
+
+    http.post<any[]>('https://localhost:7285/GetAllBill', body, options).subscribe(data_result=>{
       this.data=data_result;
-      console.log(data_result);
-  })
+
+    })
   }
 
 }

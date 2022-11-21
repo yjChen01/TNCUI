@@ -1,0 +1,12 @@
+.tablehead{
+  background-color: rgb(49, 49, 49);
+  color: beige;
+}
+.tableEqname{
+  background-color: rgb(105, 105, 105);
+  color: beige;
+}
+.tableStatusname{
+  background-color: rgb(172, 172, 172);
+  color: rgb(10, 10, 10);
+}
