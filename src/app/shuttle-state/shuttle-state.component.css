@@ -2,14 +2,10 @@
   background-color: rgb(49, 49, 49);
   color: beige;
 }
-
-.nofoot{
-  margin-bottom: 0;
-}
-
 .tableEqname{
   background-color: rgb(105, 105, 105);
   color: beige;
+  font-weight: bold;
 }
 .tableStatusname{
   background-color: rgb(172, 172, 172);

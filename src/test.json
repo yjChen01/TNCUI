@@ -1,0 +1,292 @@
+{
+  "lifters": {
+    "lifter_a0": {
+      "is_auto": 1,
+      "is_disconnected": 0,
+      "is_dislinked": 1,
+      "is_error": 0,
+      "is_heartbroken": 0,
+      "is_idle": 1,
+      "layer": 0,
+      "task_id": 0,
+      "task_name": 0,
+      "task_param": 0
+    },
+    "lifter_a1": {
+      "is_auto": 1,
+      "is_disconnected": 0,
+      "is_dislinked": 1,
+      "is_error": 0,
+      "is_heartbroken": 0,
+      "is_idle": 1,
+      "layer": 0,
+      "task_id": 0,
+      "task_name": 0,
+      "task_param": 0
+    },
+    "lifter_a2": {
+      "is_auto": 1,
+      "is_disconnected": 0,
+      "is_dislinked": 1,
+      "is_error": 0,
+      "is_heartbroken": 0,
+      "is_idle": 1,
+      "layer": 0,
+      "task_id": 0,
+      "task_name": 0,
+      "task_param": 0
+    }
+  },
+  "shuttles": {
+    "shuttle_a0": {
+      "column": 3,
+      "is_auto": true,
+      "is_disconnected": 0,
+      "is_error": 0,
+      "is_fully_charged": 1,
+      "is_heartbroken": 0,
+      "is_idle": 1,
+      "is_loaded": 0,
+      "layer": 5,
+      "row": 2,
+      "task_id": 0,
+      "task_name": 0,
+      "task_param": 0
+    },
+    "shuttle_a1": {
+      "column": 3,
+      "is_auto": true,
+      "is_disconnected": 0,
+      "is_error": 0,
+      "is_fully_charged": 1,
+      "is_heartbroken": 0,
+      "is_idle": 1,
+      "is_loaded": 0,
+      "layer": 6,
+      "row": 2,
+      "task_id": 0,
+      "task_name": 0,
+      "task_param": 0
+    },
+    "shuttle_a2": {
+      "column": 3,
+      "is_auto": true,
+      "is_disconnected": 0,
+      "is_error": 0,
+      "is_fully_charged": 1,
+      "is_heartbroken": 0,
+      "is_idle": 1,
+      "is_loaded": 0,
+      "layer": 7,
+      "row": 2,
+      "task_id": 0,
+      "task_name": 0,
+      "task_param": 0
+    },
+    "shuttle_a3": {
+      "column": 3,
+      "is_auto": true,
+      "is_disconnected": 0,
+      "is_error": 0,
+      "is_fully_charged": 1,
+      "is_heartbroken": 0,
+      "is_idle": 1,
+      "is_loaded": 0,
+      "layer": 8,
+      "row": 2,
+      "task_id": 0,
+      "task_name": 0,
+      "task_param": 0
+    },
+    "shuttle_a4": {
+      "column": 3,
+      "is_auto": true,
+      "is_disconnected": 0,
+      "is_error": 0,
+      "is_fully_charged": 1,
+      "is_heartbroken": 0,
+      "is_idle": 1,
+      "is_loaded": 0,
+      "layer": 9,
+      "row": 2,
+      "task_id": 0,
+      "task_name": 0,
+      "task_param": 0
+    },
+    "shuttle_a5": {
+      "column": 3,
+      "is_auto": true,
+      "is_disconnected": 0,
+      "is_error": 0,
+      "is_fully_charged": 1,
+      "is_heartbroken": 0,
+      "is_idle": 1,
+      "is_loaded": 0,
+      "layer": 10,
+      "row": 2,
+      "task_id": 0,
+      "task_name": 0,
+      "task_param": 0
+    },
+    "shuttle_a6": {
+      "column": 3,
+      "is_auto": true,
+      "is_disconnected": 0,
+      "is_error": 0,
+      "is_fully_charged": 1,
+      "is_heartbroken": 0,
+      "is_idle": 1,
+      "is_loaded": 0,
+      "layer": 11,
+      "row": 2,
+      "task_id": 0,
+      "task_name": 0,
+      "task_param": 0
+    },
+    "shuttle_a7": {
+      "column": 3,
+      "is_auto": true,
+      "is_disconnected": 0,
+      "is_error": 0,
+      "is_fully_charged": 1,
+      "is_heartbroken": 0,
+      "is_idle": 1,
+      "is_loaded": 0,
+      "layer": 12,
+      "row": 2,
+      "task_id": 0,
+      "task_name": 0,
+      "task_param": 0
+    },
+    "shuttle_a8": {
+      "column": 3,
+      "is_auto": true,
+      "is_disconnected": 0,
+      "is_error": 0,
+      "is_fully_charged": 1,
+      "is_heartbroken": 0,
+      "is_idle": 1,
+      "is_loaded": 0,
+      "layer": 13,
+      "row": 2,
+      "task_id": 0,
+      "task_name": 0,
+      "task_param": 0
+    },
+    "shuttle_a9": {
+      "column": 3,
+      "is_auto": true,
+      "is_disconnected": 0,
+      "is_error": 0,
+      "is_fully_charged": 1,
+      "is_heartbroken": 0,
+      "is_idle": 1,
+      "is_loaded": 0,
+      "layer": 14,
+      "row": 2,
+      "task_id": 0,
+      "task_name": 0,
+      "task_param": 0
+    }
+  },
+  "system": {
+    "lifters": {
+      "lifter_a0": false,
+      "lifter_a1": false,
+      "lifter_a2": false
+    },
+    "state": -1
+  },
+  "task_executors": {
+    "task_executor_a0": {
+      "coord": [
+        2,
+        3,
+        5
+      ],
+      "job_id": "",
+      "state": 2
+    },
+    "task_executor_a1": {
+      "coord": [
+        2,
+        3,
+        6
+      ],
+      "job_id": "",
+      "state": 2
+    },
+    "task_executor_a2": {
+      "coord": [
+        2,
+        3,
+        7
+      ],
+      "job_id": "",
+      "state": 2
+    },
+    "task_executor_a3": {
+      "coord": [
+        2,
+        3,
+        8
+      ],
+      "job_id": "",
+      "state": 2
+    },
+    "task_executor_a4": {
+      "coord": [
+        2,
+        3,
+        9
+      ],
+      "job_id": "",
+      "state": 2
+    },
+    "task_executor_a5": {
+      "coord": [
+        2,
+        3,
+        10
+      ],
+      "job_id": "",
+      "state": 2
+    },
+    "task_executor_a6": {
+      "coord": [
+        2,
+        3,
+        11
+      ],
+      "job_id": "",
+      "state": 2
+    },
+    "task_executor_a7": {
+      "coord": [
+        2,
+        3,
+        12
+      ],
+      "job_id": "",
+      "state": 2
+    },
+    "task_executor_a8": {
+      "coord": [
+        2,
+        3,
+        13
+      ],
+      "job_id": "",
+      "state": 2
+    },
+    "task_executor_a9": {
+      "coord": [
+        2,
+        3,
+        14
+      ],
+      "job_id": "",
+      "state": 2
+    }
+  }
+}

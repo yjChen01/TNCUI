@@ -11,6 +11,8 @@ import { ErrorExceptComponent } from './error-except/error-except.component';
 import { BillQueryComponent } from './bill-query/bill-query.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ShuttleStateComponent } from './shuttle-state/shuttle-state.component';
+import { LiftStateComponent } from './lift-state/lift-state.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
     PLCStatusComponent,
     ErrorExceptComponent,
     BillQueryComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ShuttleStateComponent,
+    LiftStateComponent
   ],
   imports: [
     BrowserModule,

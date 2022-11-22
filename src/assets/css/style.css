@@ -687,7 +687,7 @@ ul.tree, ul.tree_sub {
 }
 
 /*------------------------button--------------------------------*/
-  
+
         .btn.btn-ia-blue {
             background: #1C5098;
             border-color: #1C5098;
@@ -928,6 +928,21 @@ a {
     to {
         color: #e74a3b;
     }
+}
+
+.icon-green-to-gray{
+  animation: icon-green-to-gray-blinking 2s infinite;
+}
+
+
+@keyframes icon-green-to-gray-blinking {
+  from {
+      color: #666666;
+  }
+
+  to {
+      color: #08e700;
+  }
 }
 
 .card .card-header[data-toggle=collapse]::after {
