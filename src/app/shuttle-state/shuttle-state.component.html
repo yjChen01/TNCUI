@@ -4,14 +4,14 @@
       <td rowspan="8" class="tableEqname">{{ shuttlestate.key }}</td>
       <td class="tableStatusname">is_disconnected</td>
       <td>
-        <!-- {{ shuttlestate.value.is_disconnected }} -->
-        <span
+        {{ transferstatetobool(shuttlestate.value.is_disconnected) }}
+        <!-- <span
           data-toggle="tooltip"
           data-placement="bottom"
           [ngClass]="getlightClass(shuttlestate.value.is_disconnected)"
           class="icon-circle"
         >
-        </span>
+        </span> -->
       </td>
       <td class="tableStatusname">row</td>
       <td>{{ shuttlestate.value.row }}</td>
@@ -19,14 +19,14 @@
     <tr>
       <td class="tableStatusname">is_heartbroken</td>
       <td>
-        <!-- {{ shuttlestate.value.is_heartbroken }} -->
-        <span
+        {{ transferstatetobool(shuttlestate.value.is_heartbroken) }}
+        <!-- <span
           data-toggle="tooltip"
           data-placement="bottom"
           [ngClass]="getlightClass(shuttlestate.value.is_heartbroken)"
           class="icon-circle"
         >
-        </span>
+        </span> -->
       </td>
       <td class="tableStatusname">column</td>
       <td>{{ shuttlestate.value.column }}</td>
@@ -34,14 +34,14 @@
     <tr>
       <td class="tableStatusname">is_idle</td>
       <td>
-        <!-- {{ shuttlestate.value.is_idle }} -->
-        <span
+        {{ transferstatetobool(shuttlestate.value.is_idle) }}
+        <!-- <span
           data-toggle="tooltip"
           data-placement="bottom"
           [ngClass]="getlightClass(shuttlestate.value.is_idle)"
           class="icon-circle"
         >
-        </span>
+        </span> -->
       </td>
       <td class="tableStatusname">layer</td>
       <td>{{ shuttlestate.value.layer }}</td>
@@ -49,49 +49,49 @@
     <tr>
       <td class="tableStatusname">is_auto</td>
       <td>
-        <!-- {{ shuttlestate.value.is_auto }} -->
-        <span
+        {{ transferstatetobool(shuttlestate.value.is_auto) }}
+        <!-- <span
           data-toggle="tooltip"
           data-placement="bottom"
           [ngClass]="getlightClass(shuttlestate.value.is_auto)"
           class="icon-circle"
         >
-        </span>
+        </span> -->
       </td>
-      <td class="tableStatusname">is_charging</td>
+      <td class="tableStatusname">is_fully_charged</td>
       <td>
-        <!-- {{ shuttlestate.value.is_charging }} -->
-        <span
+        {{ transferstatetobool(shuttlestate.value.is_fully_charged) }}
+        <!-- <span
           data-toggle="tooltip"
           data-placement="bottom"
           [ngClass]="getlightClass(shuttlestate.value.is_charging)"
           class="icon-circle"
         >
-        </span>
+        </span> -->
       </td>
     </tr>
     <tr>
       <td class="tableStatusname">is_error</td>
       <td>
-        <!-- {{ shuttlestate.value.is_error }} -->
-        <span
+        {{ transferstatetobool(shuttlestate.value.is_error) }}
+        <!-- <span
           data-toggle="tooltip"
           data-placement="bottom"
           [ngClass]="getlightClass(shuttlestate.value.is_error)"
           class="icon-circle"
         >
-        </span>
+        </span> -->
       </td>
-      <td class="tableStatusname">is_fully_charged</td>
+      <td class="tableStatusname"></td>
       <td>
-        <!-- {{ shuttlestate.value.is_fully_charged }} -->
-        <span
+        <!-- {{ transferstatetobool(shuttlestate.value.is_fully_charged) }} -->
+        <!-- <span
           data-toggle="tooltip"
           data-placement="bottom"
           [ngClass]="getlightClass(shuttlestate.value.is_fully_charged)"
           class="icon-circle"
         >
-        </span>
+        </span> -->
       </td>
     </tr>
     <tr>

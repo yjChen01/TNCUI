@@ -4,14 +4,14 @@
       <td rowspan="8" class="tableEqname">{{ liftstate.key }}</td>
       <td class="tableStatusname">is_disconnected</td>
       <td>
-        <!-- {{ liftstate.value.is_disconnected }} -->
-        <span
+        {{ transferstatetobool(liftstate.value.is_disconnected) }}
+        <!-- <span
           data-toggle="tooltip"
           data-placement="bottom"
           [ngClass]="getlightClass(liftstate.value.is_disconnected)"
           class="icon-circle"
         >
-        </span>
+        </span> -->
       </td>
       <td class="tableStatusname">layer</td>
       <td>{{ liftstate.value.layer }}</td>
@@ -19,14 +19,14 @@
     <tr>
       <td class="tableStatusname">is_heartbroken</td>
       <td>
-        <!-- {{ liftstate.value.is_heartbroken }} -->
-        <span
+        {{ transferstatetobool(liftstate.value.is_heartbroken) }}
+        <!-- <span
           data-toggle="tooltip"
           data-placement="bottom"
           [ngClass]="getlightClass(liftstate.value.is_heartbroken)"
           class="icon-circle"
         >
-        </span>
+        </span> -->
       </td>
       <td class="tableStatusname">task_id</td>
       <td>{{ liftstate.value.task_id }}</td>
@@ -34,14 +34,14 @@
     <tr>
       <td class="tableStatusname">is_idle</td>
       <td>
-        <!-- {{ liftstate.value.is_idle }} -->
-        <span
+        {{ transferstatetobool(liftstate.value.is_idle) }}
+        <!-- <span
           data-toggle="tooltip"
           data-placement="bottom"
           [ngClass]="getlightClass(liftstate.value.is_idle)"
           class="icon-circle"
         >
-        </span>
+        </span> -->
       </td>
       <td class="tableStatusname">task_name</td>
       <td>{{ liftstate.value.task_name }}</td>
@@ -49,14 +49,14 @@
     <tr>
       <td class="tableStatusname">is_auto</td>
       <td>
-        <!-- {{ liftstate.value.is_auto }} -->
-        <span
+        {{ transferstatetobool(liftstate.value.is_auto) }}
+        <!-- <span
           data-toggle="tooltip"
           data-placement="bottom"
           [ngClass]="getlightClass(liftstate.value.is_auto)"
           class="icon-circle"
         >
-        </span>
+        </span> -->
       </td>
       <td class="tableStatusname">task_param</td>
       <td>{{ liftstate.value.task_param }}</td>
@@ -64,14 +64,14 @@
     <tr>
       <td class="tableStatusname">is_error</td>
       <td>
-        <!-- {{ liftstate.value.is_error }} -->
-        <span
+        {{ transferstatetobool(liftstate.value.is_error) }}
+        <!-- <span
           data-toggle="tooltip"
           data-placement="bottom"
           [ngClass]="getlightClass(liftstate.value.is_error)"
           class="icon-circle"
         >
-        </span>
+        </span> -->
       </td>
       <td class="tableStatusname"></td>
       <td></td>

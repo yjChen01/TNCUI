@@ -14,4 +14,9 @@ export class LiftStateComponent {
     if (val === 0) return 'icon-red-to-gray';
     else return 'icon-green-to-gray';
   }
+
+  transferstatetobool(par: number) {
+    if (par == 0) return false;
+    else return true;
+  }
 }

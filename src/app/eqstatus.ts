@@ -52,3 +52,11 @@ export interface TaskExecutor {
   job_id: string;
   state:  number;
 }
+
+// enum EQ_state_enum {
+//   未連接,
+//   維修,
+//   閒置,
+//   任務,
+//   異常,
+// }
