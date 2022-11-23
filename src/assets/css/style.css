@@ -916,7 +916,7 @@ a {
 }
 
 .icon-red-to-gray{
-    animation: icon-red-to-gray-blinking 2s infinite;
+    animation: icon-red-to-gray-blinking 1s infinite;
 }
 
 
@@ -931,7 +931,7 @@ a {
 }
 
 .icon-green-to-gray{
-  animation: icon-green-to-gray-blinking 2s infinite;
+  animation: icon-green-to-gray-blinking 1s infinite;
 }
 
 
@@ -943,6 +943,40 @@ a {
   to {
       color: #08e700;
   }
+}
+
+.icon-blue-to-gray{
+  animation: icon-blue-to-gray-blinking 1s infinite;
+}
+
+
+@keyframes icon-blue-to-gray-blinking {
+  from {
+      color: #666666;
+  }
+
+  to {
+      color: #2b2ef8;
+  }
+}
+
+.icon-orange-to-gray{
+  animation: icon-orange-to-gray-blinking 1s infinite;
+}
+
+
+@keyframes icon-orange-to-gray-blinking {
+  from {
+      color: #666666;
+  }
+
+  to {
+      color: #ff9100;
+  }
+}
+
+.icon-keep-gray{
+  color: #666666;
 }
 
 .card .card-header[data-toggle=collapse]::after {

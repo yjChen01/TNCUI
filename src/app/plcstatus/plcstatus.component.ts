@@ -13,10 +13,19 @@ export class PLCStatusComponent {
 
   constructor(private http: HttpClient) {
     http
-      .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
-      .subscribe((data_result) => {
-        this.shuttles = data_result.shuttles;
-        this.lifts = data_result.lifters;
-      });
+    .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
+    .subscribe((data_result) => {
+      this.shuttles = data_result.shuttles;
+      this.lifts = data_result.lifters;
+    });
+    setInterval(()=>{
+      http
+        .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
+        .subscribe((data_result) => {
+          this.shuttles = data_result.shuttles;
+          this.lifts = data_result.lifters;
+        });
+    },3000);
   }
+
 }

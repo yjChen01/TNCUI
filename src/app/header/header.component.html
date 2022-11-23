@@ -1,58 +1,96 @@
 <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
   <div class="top-bar">
     <div class="container-fluid">
-        <div class="row">
-            <div class="pt-2 col-12 pr-5">
-                <a href="#" class="">
-                    <span data-toggle="tooltip" data-placement="bottom" title="系統狀態 : 停止中" class="icon-circle icon-red-to-gray"></span> <span class="d-none d-md-inline-block font-weight-bold">系統狀態 : 停止中</span>
-                </a>
-                <!-- <span class="mx-md-2 d-inline-block"></span>     -->
-                <a href="#" class="">
-                    <span data-toggle="tooltip" data-placement="bottom" title="訂單狀態" class="icon-circle icon-green"></span> <span class="d-none d-md-inline-block font-weight-bold">訂單狀態</span>
-                </a>
-                <a href="#" class="">
-                    <span data-toggle="tooltip" data-placement="bottom" title="PLC狀態" class="icon-circle icon-red"></span> <span class="d-none d-md-inline-block font-weight-bold">PLC狀態</span>
-                </a>
-                <div class="float-right">
-                    <a href="#" class=""><span class="mr-2  icon-user"></span> <span class="d-none d-md-inline-block">iamech</span></a>
-                    <span class="mx-md-2 d-inline-block"></span>
-                    <a href="#" class=""><span class="mr-2  icon-sign-out"></span> <span class="d-none d-md-inline-block">登出</span></a>
-                </div>
-            </div>
+      <div class="row">
+        <div class="pt-2 col-12 pr-5">
+          <a href="#" class="statetitle">
+            <span
+              data-toggle="tooltip"
+              data-placement="bottom"
+              [ngClass]="getStatelightClass(systemstate_light)"
+              class="icon-circle"
+            ></span>
+            <span class="d-none d-md-inline-block font-weight-bold">
+              系統狀態 : {{ systemstate_word }}
+            </span>
+          </a>
+          <a href="#" class="statetitle">
+            <span
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="訂單狀態"
+              [ngClass]="getErrorBillExists()"
+              class="icon-circle"
+            >
+            </span>
+            <span class="d-none d-md-inline-block font-weight-bold">
+              訂單狀態
+            </span>
+          </a>
+          <a href="#" class="statetitle">
+            <span
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="PLC狀態"
+              [ngClass]="getErrorLightClass()"
+              class="icon-circle"
+            ></span>
+            <span class="d-none d-md-inline-block font-weight-bold">
+              PLC狀態
+            </span>
+          </a>
+          <div class="float-right">
+            <a href="#" class=""
+              ><span class="mr-2 icon-user"></span>
+              <span class="d-none d-md-inline-block">iamech</span></a
+            >
+            <span class="mx-md-2 d-inline-block"></span>
+            <a href="#" class=""
+              ><span class="mr-2 icon-sign-out"></span>
+              <span class="d-none d-md-inline-block">登出</span></a
+            >
+          </div>
         </div>
-    </div>
-</div>
-  <div class="container-fluid">
-      <div class="row align-items-center position-relative">
-
-          <div class="site-logo">
-              <a href="./SystemStatus.html" class="text-black"><img src="/assets/image/logo.png" style="width:250px" /></a>
-          </div>
-
-          <div class="col-12">
-              <nav class="site-navigation text-right ml-auto " role="navigation">
-
-                  <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-                      <li>
-                          <a routerLink="/SystemStatus">{{title_system_status}}</a>
-                      </li>
-                      <li>
-                          <a href="/StorageStatus">{{title_storage_status}}</a>
-                      </li>
-                      <li>
-                          <a href="/PLCStatus">{{title_PLC_status}}</a>
-                      </li>
-                      <li>
-                          <a href="/Error">{{title_error_exception}}</a>
-                      </li>
-                      <li>
-                          <a href="/BillQuery">{{title_bill_query}}</a>
-                      </li>
-                  </ul>
-              </nav>
-          </div>
-
-          <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
       </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row align-items-center position-relative">
+      <div class="site-logo">
+        <a href="./SystemStatus.html" class="text-black"
+          ><img src="/assets/image/logo.png" style="width: 250px"
+        /></a>
+      </div>
+
+      <div class="col-12">
+        <nav class="site-navigation text-right ml-auto" role="navigation">
+          <ul
+            class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block"
+          >
+            <li>
+              <a routerLink="/SystemStatus">{{ title_system_status }}</a>
+            </li>
+            <li>
+              <a href="/StorageStatus">{{ title_storage_status }}</a>
+            </li>
+            <li>
+              <a href="/PLCStatus">{{ title_PLC_status }}</a>
+            </li>
+            <li>
+              <a href="/Error">{{ title_error_exception }}</a>
+            </li>
+            <li>
+              <a href="/BillQuery">{{ title_bill_query }}</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="toggle-button d-inline-block d-lg-none">
+        <a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"
+          ><span class="icon-menu h3"></span
+        ></a>
+      </div>
+    </div>
   </div>
 </header>
