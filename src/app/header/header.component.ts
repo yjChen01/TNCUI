@@ -25,6 +25,7 @@ export class HeaderComponent {
 
   EQ_error_count: number = 0;
 
+  intervalId :any;
   constructor(private http: HttpClient) {
     http
       .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
@@ -36,7 +37,7 @@ export class HeaderComponent {
       .subscribe((data_result) => {
         this.billstate_light = data_result;
       });
-    setInterval(() => {
+      this.intervalId=setInterval(() => {
       http
         .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
         .subscribe((data_result) => {
@@ -49,7 +50,10 @@ export class HeaderComponent {
         });
     }, 3000);
   }
-
+  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
+  ngOnDestroy() {
+    clearInterval(this.intervalId);
+  }
   getStatelightClass(state: number) {
     if (state == 0) {
       this.systemstate_word = '閒置';

@@ -8,6 +8,13 @@ import { Component } from '@angular/core';
 
 export class StorageStatusComponent  {
 
-  constructor() { }
+  layer_list_ddl:any[]=[];
+  layer_count:number=21;
+
+  constructor() {
+    for(let i=1;i<=this.layer_count;i++){
+      this.layer_list_ddl.push({ key: i, value: i },);
+    }
+  }
 
 }

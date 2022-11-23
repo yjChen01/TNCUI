@@ -46,15 +46,7 @@
                 <div class="form-row">
                   <div class="form-group col-md-7">
                     <select class="form-control">
-                      <option
-                        *ngFor="
-                          let item of shuttle_state_list;
-                          trackBy: shuttle_state_list?.keys
-                        "
-                        [value]="item.key"
-                      >
-                        {{ item.value }}
-                      </option>
+                      <option *ngFor="let opt of shuttle_state_list" [value]="opt.key">{{opt.value}}</option>
                     </select>
                   </div>
                   <div class="col-md-5">
