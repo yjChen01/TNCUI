@@ -1,4 +1,3 @@
-import { SystemLifters } from './../eqstatus';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { EQStatus, TaskExecutor } from '../eqstatus';
@@ -24,10 +23,13 @@ export class SystemStatusComponent {
   shuttle_system_arr: TaskExecutor[] = [];
   shuttle_name_arr: string[] = [];
 
-  lift_system: SystemLifters;
+  lift_system: { [key: string]: boolean };
   lift_system_arr:boolean[]=[];
+  lift_name_arr:string[]=[];
 
   shuttle_count:number=0;
+  lift_count:number=0;
+
   constructor(private http: HttpClient) {
     http
       .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
@@ -35,14 +37,20 @@ export class SystemStatusComponent {
         this.shuttle_system = data_result.task_executors;
         this.lift_system = data_result.system.lifters;
         let v_shuttle_system_arr: TaskExecutor[] = [];
+        let v_lift_system_arr: boolean[] = [];
         for (const [key, value] of Object.entries(this.shuttle_system)) {
           // console.log(`${key}: ${value}`);
           v_shuttle_system_arr.push(value);
           this.shuttle_name_arr.push(key);
           this.shuttle_count++;
         }
-
+        for(const[key,value] of Object.entries(this.lift_system)){
+          v_lift_system_arr.push(value);
+          this.lift_name_arr.push(key);
+          this.lift_count++;
+        }
         this.shuttle_system_arr = v_shuttle_system_arr;
+        this.lift_system_arr=v_lift_system_arr;
       });
     setInterval(() => {
       http
@@ -51,11 +59,16 @@ export class SystemStatusComponent {
           this.shuttle_system = data_result.task_executors;
           this.lift_system = data_result.system.lifters;
           let v_shuttle_system_arr: TaskExecutor[] = [];
+          let v_lift_system_arr: boolean[] = [];
           for (const [key, value] of Object.entries(this.shuttle_system)) {
             // console.log(`${key}: ${value}`);
             v_shuttle_system_arr.push(value);
           }
+          for(const[key,value] of Object.entries(this.lift_system)){
+            v_lift_system_arr.push(value);
+          }
           this.shuttle_system_arr = v_shuttle_system_arr;
+          this.lift_system_arr=v_lift_system_arr;
         });
     }, 3000);
   }

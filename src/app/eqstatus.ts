@@ -37,14 +37,8 @@ export interface Lift {
 }
 
 export interface System {
-  lifters: SystemLifters;
+  lifters: { [key: string]: boolean; };
   state:   number;
-}
-
-export interface SystemLifters {
-  lifter_a0: boolean;
-  lifter_a1: boolean;
-  lifter_a2: boolean;
 }
 
 export interface TaskExecutor {

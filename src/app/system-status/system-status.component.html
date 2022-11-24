@@ -46,7 +46,12 @@
                 <div class="form-row">
                   <div class="form-group col-md-7">
                     <select class="form-control">
-                      <option *ngFor="let opt of shuttle_state_list" [value]="opt.key">{{opt.value}}</option>
+                      <option
+                        *ngFor="let opt of shuttle_state_list"
+                        [value]="opt.key"
+                      >
+                        {{ opt.value }}
+                      </option>
                     </select>
                   </div>
                   <div class="col-md-5">
@@ -91,21 +96,21 @@
             </tr>
           </thead>
           <tbody>
-            <tr [ngClass]="get_lifter_class(lift_system.lifter_a0)">
-              <td>{{lift_system.lifter_a0}}</td>
-              <td>{{get_lifter_state(lift_system.lifter_a0)}}</td>
+            <tr
+              *ngFor="let _ of [].constructor(lift_count); let i = index"
+              [ngClass]="get_lifter_class(lift_system_arr[i])"
+            >
+              <td>{{ lift_name_arr[i] }}</td>
+              <td>{{ get_lifter_state(lift_system_arr[i]) }}</td>
               <td>
                 <div class="form-row">
                   <div class="form-group col-md-7">
                     <select class="form-control">
                       <option
-                        *ngFor="
-                          let item of lift_state_list;
-                          trackBy: lift_state_list?.keys
-                        "
-                        [value]="item.key"
+                        *ngFor="let opt of lift_state_list"
+                        [value]="opt.key"
                       >
-                        {{ item.value }}
+                        {{ opt.value }}
                       </option>
                     </select>
                   </div>
