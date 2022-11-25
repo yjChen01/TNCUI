@@ -1,0 +1,42 @@
+.icon-normal-shuttle{
+  color: #f9cb9cff;
+  font-size: 30px;
+}
+
+.icon-error-shuttle{
+  color: #e73f3f;
+  font-size: 30px;
+}
+
+.icon-forbidden-storage{
+  color: #f4ccccff;
+  font-size: 30px;
+}
+
+.icon-IB-storage{
+  color: #d9ead3ff;
+  font-size: 30px;
+}
+
+.icon-OB-storage{
+  color: #d9d2e9ff;
+  font-size: 30px;
+}
+
+.icon-full-storage{
+  color: #cfe2f3ff;
+  font-size: 30px;
+}
+
+.icon-empty-storage{
+  color: #eeeeeeff;
+  font-size: 30px;
+}
+
+.shuttle_normal_color{
+  color: #f9cb9cff;
+}
+
+.shuttle_error_color{
+  color: #e73f3f;
+}

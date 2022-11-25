@@ -13,6 +13,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ShuttleStateComponent } from './shuttle-state/shuttle-state.component';
 import { LiftStateComponent } from './lift-state/lift-state.component';
+import { StorageLayerInfoComponent } from './storage-layer-info/storage-layer-info.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { LiftStateComponent } from './lift-state/lift-state.component';
     BillQueryComponent,
     WelcomeComponent,
     ShuttleStateComponent,
-    LiftStateComponent
+    LiftStateComponent,
+    StorageLayerInfoComponent
   ],
   imports: [
     BrowserModule,
