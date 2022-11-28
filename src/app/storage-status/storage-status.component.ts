@@ -27,17 +27,6 @@ export class StorageStatusComponent {
 
   current_layer: number = 4;
 
-  row_09_arr: number[] = [];
-  row_08_arr: number[] = [];
-  row_07_arr: number[] = [];
-  row_06_arr: number[] = [];
-  row_05_arr: number[] = [];
-  row_04_arr: number[] = [];
-  row_03_arr: number[] = [];
-  row_02_arr: number[] = [];
-  row_01_arr: number[] = [];
-  row_00_arr: number[] = [];
-
   storage_data: number[][] = [[]];
   // hey:LayerInfo;
 
@@ -60,11 +49,9 @@ export class StorageStatusComponent {
     http
       .post<LayerInfo>('https://localhost:7285/GetStorageState', body, options)
       .subscribe((data_result) => {
-        let tmp_row: number[][] = [[]];
         for (const [key, value] of Object.entries(data_result)) {
-          // tmp_row[key].push(value);
+          this.storage_data[value.row_no]=value.row_state;
         }
-        // this.storage_data = tmp_row;
       });
     setInterval(() => {
       http
@@ -74,14 +61,11 @@ export class StorageStatusComponent {
           options
         )
         .subscribe((data_result) => {
-          let tmp_row: number[][] = [[]];
           for (const [key, value] of Object.entries(data_result)) {
-            // tmp_row[key].push(value);
-            // console.log(tmp_row[key]);
+            this.storage_data[value.row_no]=value.row_state;
           }
-          // this.storage_data = tmp_row;
         });
-    }, 3000);
+    }, 4000);
   }
 
   getErrorLightClass(state: boolean) {
