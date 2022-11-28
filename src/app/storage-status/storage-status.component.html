@@ -7,14 +7,14 @@
             <div class="form-row">
               <label class="col-md-1 pt-2 pr-2 text-right">樓層</label>
               <div class="form-group col-md-2">
-                <select class="form-control">
+                <select class="form-control" #CurrentSelectLayer>
                   <option *ngFor="let opt of layer_list_ddl" [value]="opt.key">
                     {{ opt.key }}
                   </option>
                 </select>
               </div>
               <div class="col-md-3">
-                <button class="btn btn-ia-blue">搜尋</button>
+                <button class="btn btn-ia-blue" (click)="clickLayerDDL(CurrentSelectLayer.value)">搜尋</button>
               </div>
             </div>
             <div class="px-3 pt-2">
@@ -122,8 +122,8 @@
                     <tr>
                       <td rowspan="3">
                         <i
-                          *ngIf="shuttle_column_4 === -1"
-                          [ngClass]="getErrorLightClass(shuttle_column_state_4)"
+                          *ngIf="shuttle_col[4] === -1"
+                          [ngClass]="getErrorLightClass(shuttle_col_state)"
                           class="icon-circle ia-shuttle-icon"
                         ></i>
                       </td>
@@ -144,8 +144,8 @@
                         "
                       >
                         <i
-                          *ngIf="i === shuttle_column_4"
-                          [ngClass]="getErrorLightClass(shuttle_column_state_4)"
+                          *ngIf="i === shuttle_col[4]"
+                          [ngClass]="getErrorLightClass(shuttle_col_state)"
                           class="icon-circle ia-shuttle-icon"
                         ></i>
                       </td>
@@ -179,8 +179,8 @@
                         "
                       >
                         <i
-                          *ngIf="i === shuttle_column_3"
-                          [ngClass]="getErrorLightClass(shuttle_column_state_3)"
+                          *ngIf="i === shuttle_col[3]"
+                          [ngClass]="getErrorLightClass(shuttle_col_state)"
                           class="icon-circle ia-shuttle-icon"
                         ></i>
                       </td>
@@ -198,8 +198,8 @@
                     <tr>
                       <td rowspan="3">
                         <i
-                          *ngIf="shuttle_column_2 === -1"
-                          [ngClass]="getErrorLightClass(shuttle_column_state_2)"
+                          *ngIf="shuttle_col[2] === -1"
+                          [ngClass]="getErrorLightClass(shuttle_col_state)"
                           class="icon-circle ia-shuttle-icon"
                         ></i>
                       </td>
@@ -220,8 +220,8 @@
                         "
                       >
                         <i
-                          *ngIf="i === shuttle_column_2"
-                          [ngClass]="getErrorLightClass(shuttle_column_state_2)"
+                          *ngIf="i === shuttle_col[2]"
+                          [ngClass]="getErrorLightClass(shuttle_col_state)"
                           class="icon-circle ia-shuttle-icon"
                         ></i>
                       </td>
@@ -255,8 +255,8 @@
                         "
                       >
                         <i
-                          *ngIf="i === shuttle_column_1"
-                          [ngClass]="getErrorLightClass(shuttle_column_state_1)"
+                          *ngIf="i === shuttle_col[1]"
+                          [ngClass]="getErrorLightClass(shuttle_col_state)"
                           class="icon-circle ia-shuttle-icon"
                         ></i>
                       </td>
@@ -274,8 +274,8 @@
                     <tr>
                       <td rowspan="3">
                         <i
-                          *ngIf="shuttle_column_0 === -1"
-                          [ngClass]="getErrorLightClass(shuttle_column_state_0)"
+                          *ngIf="shuttle_col[0] === -1"
+                          [ngClass]="getErrorLightClass(shuttle_col_state)"
                           class="icon-circle ia-shuttle-icon"
                         ></i>
                       </td>
@@ -296,8 +296,8 @@
                         "
                       >
                         <i
-                          *ngIf="i === shuttle_column_0"
-                          [ngClass]="getErrorLightClass(shuttle_column_state_0)"
+                          *ngIf="i === shuttle_col[0]"
+                          [ngClass]="getErrorLightClass(shuttle_col_state)"
                           class="icon-circle ia-shuttle-icon"
                         ></i>
                       </td>
