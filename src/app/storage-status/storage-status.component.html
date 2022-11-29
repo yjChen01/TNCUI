@@ -114,7 +114,7 @@
                           let i = index
                         "
                       >
-                        {{ i + 1 }}
+                        {{ i+2 }}
                       </th>
                     </tr>
                   </thead>
@@ -122,7 +122,7 @@
                     <tr>
                       <td rowspan="3">
                         <i
-                          *ngIf="shuttle_col[4] === -1"
+                          *ngIf="shuttle_col[4] === 0"
                           [ngClass]="getErrorLightClass(shuttle_col_state[4])"
                           class="icon-circle ia-shuttle-icon"
                         ></i>
@@ -144,7 +144,7 @@
                         "
                       >
                         <i
-                          *ngIf="i === shuttle_col[4]"
+                          *ngIf="i+1 === shuttle_col[4]"
                           [ngClass]="getErrorLightClass(shuttle_col_state[4])"
                           class="icon-circle ia-shuttle-icon"
                         ></i>
@@ -179,7 +179,7 @@
                         "
                       >
                         <i
-                          *ngIf="i === shuttle_col[3]"
+                          *ngIf="i+1 === shuttle_col[3]"
                           [ngClass]="getErrorLightClass(shuttle_col_state[3])"
                           class="icon-circle ia-shuttle-icon"
                         ></i>
@@ -198,7 +198,7 @@
                     <tr>
                       <td rowspan="3">
                         <i
-                          *ngIf="shuttle_col[2] === -1"
+                          *ngIf="shuttle_col[2] === 0"
                           [ngClass]="getErrorLightClass(shuttle_col_state[2])"
                           class="icon-circle ia-shuttle-icon"
                         ></i>
@@ -220,7 +220,7 @@
                         "
                       >
                         <i
-                          *ngIf="i === shuttle_col[2]"
+                          *ngIf="i+1 === shuttle_col[2]"
                           [ngClass]="getErrorLightClass(shuttle_col_state[2])"
                           class="icon-circle ia-shuttle-icon"
                         ></i>
@@ -255,7 +255,7 @@
                         "
                       >
                         <i
-                          *ngIf="i === shuttle_col[1]"
+                          *ngIf="i+1 === shuttle_col[1]"
                           [ngClass]="getErrorLightClass(shuttle_col_state[1])"
                           class="icon-circle ia-shuttle-icon"
                         ></i>
@@ -274,7 +274,7 @@
                     <tr>
                       <td rowspan="3">
                         <i
-                          *ngIf="shuttle_col[0] === -1"
+                          *ngIf="shuttle_col[0] === 0"
                           [ngClass]="getErrorLightClass(shuttle_col_state[0])"
                           class="icon-circle ia-shuttle-icon"
                         ></i>
@@ -296,7 +296,7 @@
                         "
                       >
                         <i
-                          *ngIf="i === shuttle_col[0]"
+                          *ngIf="i+1 === shuttle_col[0]"
                           [ngClass]="getErrorLightClass(shuttle_col_state[0])"
                           class="icon-circle ia-shuttle-icon"
                         ></i>

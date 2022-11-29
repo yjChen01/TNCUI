@@ -48,7 +48,7 @@ export class HeaderComponent {
         .subscribe((data_result) => {
           this.billstate_light = data_result;
         });
-    }, 3000);
+    }, 10000);
   }
   // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
   ngOnDestroy() {
