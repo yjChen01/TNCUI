@@ -1001,6 +1001,8 @@ a {
 
     .ia-rightcardheight {
         height: 532px;
+        /* 應該要做隨頁面高度浮動 */
+        /* height:calc(60%); */
     }
 
     .ia-tableheight {

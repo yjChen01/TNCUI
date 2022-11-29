@@ -1,46 +1,97 @@
-<div class="container">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>job_id</th>
-        <th>job_type</th>
-        <th>bin_id</th>
-        <th>class_id</th>
-        <th>priority</th>
-        <th>from_coord</th>
-        <th>from_action</th>
-        <th>to_coord</th>
-        <th>to_action</th>
-        <th>state</th>
-        <th>user_id</th>
-        <th>message</th>
-        <th>update_date</th>
-        <th>create_date</th>
-        <th>execute</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of data; let i=index">
-        <td>{{item.job_id}}</td>
-        <td>{{item.job_type}}</td>
-        <td>{{item.bin_id}}</td>
-        <td>{{item.class_id}}</td>
-        <td>{{item.priority}}</td>
-        <td>{{item.from_coord}}</td>
-        <td>{{item.from_action}}</td>
-        <td>{{item.to_coord}}</td>
-        <td>{{item.to_action}}</td>
-        <td>{{item.state}}</td>
-        <td>{{item.user_id}}</td>
-        <td>{{item.message}}</td>
-        <td>{{item.update_date}}</td>
-        <td>{{item.create_date}}</td>
-        <td class="btn-group-vertical">
-          <button type="button" class="btn btn-success">原訂單發送</button>
-          <button type="button" class="btn btn-warning">修正訂單</button>
-        </td>
-      </tr>
+<div class="form-row d-flex">
+  <label class="col-md-1 pt-2 pr-2 text-right">job_id</label>
+  <div class="form-group col-md-2">
+    <input
+      type="text"
+      placeholder="請輸入job_id"
+      #m_job_id
+      [value]="search_job_id"
+      (keyup)="search_job_id = m_job_id.value"
+    />
+  </div>
+  <div class="col-md-3">
+    <button class="btn btn-ia-blue" (click)="SearchByJobid(m_job_id.value)">搜尋</button>
+  </div>
+  <div class="ml-auto">
+    <pagination-controls (pageChange)="page_no = $event"></pagination-controls>
+  </div>
+</div>
 
-    </tbody>
-  </table>
+<div class="container-fluid mt-3">
+  <div class="form-row">
+    <div class="col-md-12 col-lg-12 pb-2 ia-rightcardheight ia-scrollerbar">
+      <div class="card" style="overflow: auto; min-height: 100%">
+        <div class="card-body">
+          <div class="mt-4 mb-4">
+            <div>
+              <div class="table-responsive">
+                <div class="container">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>job_id</th>
+                        <th>job_type</th>
+                        <th>bin_id</th>
+                        <th>class_id</th>
+                        <th>priority</th>
+                        <th>from_coord</th>
+                        <th>from_action</th>
+                        <th>to_coord</th>
+                        <th>to_action</th>
+                        <th>state</th>
+                        <th>user_id</th>
+                        <th>message</th>
+                        <th>update_date</th>
+                        <th>create_date</th>
+                        <th>execute</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        *ngFor="
+                          let item of data
+                            | paginate
+                              : {
+                                  itemsPerPage: page_size,
+                                  currentPage: page_no,
+                                  totalItems: total_line_count
+                                }
+                        "
+                      >
+                        <td>{{ item.job_id }}</td>
+                        <td>{{ item.job_type }}</td>
+                        <td>{{ item.bin_id }}</td>
+                        <td>{{ item.class_id }}</td>
+                        <td>{{ item.priority }}</td>
+                        <td>{{ item.from_coord }}</td>
+                        <td>{{ item.from_action }}</td>
+                        <td>{{ item.to_coord }}</td>
+                        <td>{{ item.to_action }}</td>
+                        <td>{{ item.state }}</td>
+                        <td>{{ item.user_id }}</td>
+                        <td>{{ item.message }}</td>
+                        <td>{{ item.update_date }}</td>
+                        <td>{{ item.create_date }}</td>
+                        <td class="btn-group-vertical">
+                          <button type="button" class="btn btn-success">
+                            原訂單發送
+                          </button>
+                          <button type="button" class="btn btn-warning">
+                            修正訂單
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-around">
+  <pagination-controls (pageChange)="page_no = $event"></pagination-controls>
 </div>
