@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <div>
   <div class="form-row">
     <label class="col-md-1 pt-2 pr-2 text-right">樓層</label>
@@ -137,7 +139,7 @@
                           let _ of [].constructor(column_count);
                           let i = index
                         "
-                        [ngClass]="getStorageClass(storage_data[9][i])"
+                        [ngClass]="getStorageClass(storage_data?.[9]?.[i])"
                       ></td>
                     </tr>
                     <tr>
@@ -161,7 +163,7 @@
                           let _ of [].constructor(column_count);
                           let i = index
                         "
-                        [ngClass]="getStorageClass(storage_data[8][i])"
+                        [ngClass]="getStorageClass(storage_data?.[8]?.[i])"
                       ></td>
                     </tr>
                     <tr>
@@ -172,7 +174,7 @@
                           let _ of [].constructor(column_count);
                           let i = index
                         "
-                        [ngClass]="getStorageClass(storage_data[7][i])"
+                        [ngClass]="getStorageClass(storage_data?.[7]?.[i])"
                       ></td>
                     </tr>
                     <tr>
@@ -196,7 +198,7 @@
                           let _ of [].constructor(column_count);
                           let i = index
                         "
-                        [ngClass]="getStorageClass(storage_data[6][i])"
+                        [ngClass]="getStorageClass(storage_data?.[6]?.[i])"
                       ></td>
                     </tr>
                     <tr>
@@ -213,7 +215,7 @@
                           let _ of [].constructor(column_count);
                           let i = index
                         "
-                        [ngClass]="getStorageClass(storage_data[5][i])"
+                        [ngClass]="getStorageClass(storage_data?.[5]?.[i])"
                       ></td>
                     </tr>
                     <tr>
@@ -237,7 +239,7 @@
                           let _ of [].constructor(column_count);
                           let i = index
                         "
-                        [ngClass]="getStorageClass(storage_data[4][i])"
+                        [ngClass]="getStorageClass(storage_data?.[4]?.[i])"
                       ></td>
                     </tr>
                     <tr>
@@ -248,7 +250,7 @@
                           let _ of [].constructor(column_count);
                           let i = index
                         "
-                        [ngClass]="getStorageClass(storage_data[3][i])"
+                        [ngClass]="getStorageClass(storage_data?.[3]?.[i])"
                       ></td>
                     </tr>
                     <tr>
@@ -272,7 +274,7 @@
                           let _ of [].constructor(column_count);
                           let i = index
                         "
-                        [ngClass]="getStorageClass(storage_data[2][i])"
+                        [ngClass]="getStorageClass(storage_data?.[2]?.[i])"
                       ></td>
                     </tr>
                     <tr>
@@ -289,7 +291,7 @@
                           let _ of [].constructor(column_count);
                           let i = index
                         "
-                        [ngClass]="getStorageClass(storage_data[1][i])"
+                        [ngClass]="getStorageClass(storage_data?.[1]?.[i])"
                       ></td>
                     </tr>
                     <tr>
@@ -313,7 +315,7 @@
                           let _ of [].constructor(column_count);
                           let i = index
                         "
-                        [ngClass]="getStorageClass(storage_data[0][i])"
+                        [ngClass]="getStorageClass(storage_data?.[0]?.[i])"
                       ></td>
                     </tr>
                   </tbody>
