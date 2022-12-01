@@ -13,7 +13,7 @@
     <button class="btn btn-ia-blue" (click)="SearchByJobid(m_job_id.value)">搜尋</button>
   </div>
   <div class="ml-auto">
-    <pagination-controls (pageChange)="page_no = $event"></pagination-controls>
+    <pagination-controls (pageChange)="SearchByPageNo($event)"></pagination-controls>
   </div>
 </div>
 
@@ -93,5 +93,5 @@
   </div>
 </div>
 <div class="d-flex justify-content-around">
-  <pagination-controls (pageChange)="page_no = $event"></pagination-controls>
+  <pagination-controls (pageChange)="SearchByPageNo($event)"></pagination-controls>
 </div>
