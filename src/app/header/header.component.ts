@@ -1,6 +1,6 @@
 import { style } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { elementAt } from 'rxjs';
 import { EQStatus, Shuttle, Lift } from '../eqstatus';
 
@@ -10,6 +10,8 @@ import { EQStatus, Shuttle, Lift } from '../eqstatus';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
+  @Output() EQ_data_evt=new EventEmitter<EQStatus>();
+
   title_system_status = '系統狀態';
   title_storage_status = '儲位狀態';
   title_PLC_status = 'PLC狀態';
@@ -31,24 +33,27 @@ export class HeaderComponent {
       .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
       .subscribe((data_result) => {
         this.countPLCerror(data_result);
+        this.SetDataResult(data_result);
       });
     http
       .get<boolean>('https://localhost:7285/GetErrorBillExists')
       .subscribe((data_result) => {
         this.billstate_light = data_result;
       });
+
       this.intervalId=setInterval(() => {
       http
         .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
         .subscribe((data_result) => {
           this.countPLCerror(data_result);
+          this.SetDataResult(data_result);
         });
       http
         .get<boolean>('https://localhost:7285/GetErrorBillExists')
         .subscribe((data_result) => {
           this.billstate_light = data_result;
         });
-    }, 10000);
+    }, 3000);
   }
   // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
   ngOnDestroy() {
@@ -107,5 +112,9 @@ export class HeaderComponent {
     else{
       return 'icon-green-to-gray';
     }
+  }
+
+  SetDataResult(data_rsl:EQStatus){
+    this.EQ_data_evt.emit(data_rsl);
   }
 }

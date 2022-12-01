@@ -18,14 +18,12 @@ export class PLCStatusComponent {
       this.shuttles = data_result.shuttles;
       this.lifts = data_result.lifters;
     });
-    setInterval(()=>{
-      http
-        .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
-        .subscribe((data_result) => {
-          this.shuttles = data_result.shuttles;
-          this.lifts = data_result.lifters;
-        });
-    },3000);
   }
+  handle_EQ_data(data_result:EQStatus){
+    this.shuttles = data_result.shuttles;
+    this.lifts = data_result.lifters;
+    // console.log('PLC有感覺');
+  }
+
 
 }

@@ -1,13 +1,18 @@
 import { EQStatus, Shuttle, LayerInfo } from './../eqstatus';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-storage-status',
   templateUrl: './storage-status.component.html',
   styleUrls: ['./storage-status.component.css'],
 })
-export class StorageStatusComponent {
+export class StorageStatusComponent implements OnDestroy {
+  ngOnDestroy() {
+    if(this.intv){
+      clearInterval(this.intv);
+    }
+  }
   //setting
   layer_count: number = 21;
   column_count: number = 88;
@@ -22,7 +27,9 @@ export class StorageStatusComponent {
   current_layer: number = 1;
 
   storage_data: number[][] = [[]];
-  // hey:LayerInfo;
+
+  intv:any;
+   // hey:LayerInfo;
   constructor(private http: HttpClient) {
     for (let i = 1; i <= this.layer_count; i++) {
       this.layer_list_ddl.push({ key: i, value: i });
@@ -35,13 +42,14 @@ export class StorageStatusComponent {
     this.changeLayerShuttle(http);
 
     //刷新頁面
-    setInterval(() => {
+    this.intv=setInterval(() => {
       //ini storage state(樓層=顯示樓層-1 (0 base))
       this.changeLayerStorageState(http);
 
       //Ini shuttle state(樓層=PLC樓層(1 base))
       this.changeLayerShuttle(http);
     }, 3000);
+
   }
 
   getErrorLightClass(state: number) {

@@ -52,25 +52,23 @@ export class SystemStatusComponent {
         this.shuttle_system_arr = v_shuttle_system_arr;
         this.lift_system_arr=v_lift_system_arr;
       });
-    setInterval(() => {
-      http
-        .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
-        .subscribe((data_result) => {
-          this.shuttle_system = data_result.task_executors;
-          this.lift_system = data_result.system.lifters;
-          let v_shuttle_system_arr: TaskExecutor[] = [];
-          let v_lift_system_arr: boolean[] = [];
-          for (const [key, value] of Object.entries(this.shuttle_system)) {
-            // console.log(`${key}: ${value}`);
-            v_shuttle_system_arr.push(value);
-          }
-          for(const[key,value] of Object.entries(this.lift_system)){
-            v_lift_system_arr.push(value);
-          }
-          this.shuttle_system_arr = v_shuttle_system_arr;
-          this.lift_system_arr=v_lift_system_arr;
-        });
-    }, 3000);
+  }
+
+  handle_EQ_data(data_result:EQStatus){
+    this.shuttle_system = data_result.task_executors;
+    this.lift_system = data_result.system.lifters;
+    let v_shuttle_system_arr: TaskExecutor[] = [];
+    let v_lift_system_arr: boolean[] = [];
+    for (const [key, value] of Object.entries(this.shuttle_system)) {
+      // console.log(`${key}: ${value}`);
+      v_shuttle_system_arr.push(value);
+    }
+    for(const[key,value] of Object.entries(this.lift_system)){
+      v_lift_system_arr.push(value);
+    }
+    this.shuttle_system_arr = v_shuttle_system_arr;
+    this.lift_system_arr=v_lift_system_arr;
+    // console.log('有感覺');
   }
 
   convert_eq_state(state: number) {
