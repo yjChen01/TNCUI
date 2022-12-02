@@ -67,19 +67,19 @@
           <ul
             class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block"
           >
-            <li>
+            <li [ngClass]="bright_nav('SystemStatus')" >
               <a routerLink="/SystemStatus">{{ title_system_status }}</a>
             </li>
-            <li>
+            <li [ngClass]="bright_nav('StorageStatus')" >
               <a href="/StorageStatus">{{ title_storage_status }}</a>
             </li>
-            <li>
+            <li [ngClass]="bright_nav('PLCStatus')" >
               <a href="/PLCStatus">{{ title_PLC_status }}</a>
             </li>
-            <li>
+            <li [ngClass]="bright_nav('Error')" >
               <a href="/Error">{{ title_error_exception }}</a>
             </li>
-            <li>
+            <li [ngClass]="bright_nav('BillQuery')" >
               <a href="/BillQuery">{{ title_bill_query }}</a>
             </li>
           </ul>

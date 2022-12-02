@@ -1,0 +1,17 @@
+.start_system{
+  background:#1C5098 ;
+  border-color:#1C5098;
+  color: #fff;
+}
+
+.stoping_system{
+  background:#595f68 ;
+  border-color:#595f68 ;
+  color: #fff;
+}
+
+.stop_system{
+  background:#dc3545;
+  border-color:#dc3545 ;
+  color: #fff;
+}

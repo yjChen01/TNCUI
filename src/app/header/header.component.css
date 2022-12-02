@@ -1,3 +1,19 @@
 .statetitle{
   padding-right: 10px;
 }
+
+.current_title{
+  background-color: #134b9a;
+}
+
+.current_title a{
+  color: #ffffff !important;
+}
+
+.not_current_title{
+  background-color: #ffffff;
+}
+
+.not_current_title a{
+  color:black !important;
+}

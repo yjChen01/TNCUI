@@ -1,9 +1,10 @@
+import { Routes } from '@angular/router';
 import { style } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { elementAt } from 'rxjs';
 import { EQStatus, Shuttle, Lift } from '../eqstatus';
-
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -28,7 +29,13 @@ export class HeaderComponent {
   EQ_error_count: number = 0;
 
   intervalId :any;
-  constructor(private http: HttpClient) {
+
+  current_route:string;
+
+  constructor(private http: HttpClient,private location: Location) {
+
+    this.current_route =location.path().replace('/','');
+    // console.log(this.current_route);
     http
       .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
       .subscribe((data_result) => {
@@ -116,5 +123,14 @@ export class HeaderComponent {
 
   SetDataResult(data_rsl:EQStatus){
     this.EQ_data_evt.emit(data_rsl);
+  }
+
+  bright_nav(nav_name:string){
+    if(nav_name==this.current_route){
+      return 'current_title';
+    }
+    else{
+      return 'not_current_title';
+    }
   }
 }
