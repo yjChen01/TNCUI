@@ -1,3 +1,4 @@
+import { StorageStatusComponent } from './../storage-status/storage-status.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Bill, JobBill } from '../job-bill';
@@ -53,5 +54,46 @@ export class ErrorExceptComponent  {
     console.log(v_page_no);
   }
 
+  send_task_api(body:any){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    let options = {
+      headers,
+    };
+
+    this.http
+      .post<any>('http://192.168.214.87:9080/execute_command',body,options)
+      .subscribe((data_result) => {
+        console.log(data_result);
+      });
+  }
+
+  origin_bill_resend(v_job_id:string){
+    let v_task_param={
+      job_id : v_job_id
+    }
+
+    let body = {
+      task_name:'resend_job',
+      task_param:v_task_param
+    };
+    console.log(body);
+    this.send_task_api(body);
+  }
+
+  revise_bill(v_job_id:string,v_from_coord:string){
+    let v_task_param={
+      job_id : v_job_id,
+      from_coord:v_from_coord
+    }
+
+    let body = {
+      task_name:'correct_job',
+      task_param:v_task_param
+    };
+    console.log(body);
+    this.send_task_api(body);
+  }
 
 }

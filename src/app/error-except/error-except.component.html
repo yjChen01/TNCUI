@@ -75,10 +75,10 @@
                         <td>{{ item.update_date }}</td>
                         <td>{{ item.create_date }}</td>
                         <td class="btn-group-vertical">
-                          <button type="button" class="btn btn-success">
+                          <button type="button" class="btn btn-success" (click)="origin_bill_resend(item.job_id)">
                             原訂單發送
                           </button>
-                          <button type="button" class="btn btn-warning">
+                          <button type="button" class="btn btn-warning" (click)="revise_bill(item.job_id,item.from_coord)">
                             修正訂單
                           </button>
                         </td>
