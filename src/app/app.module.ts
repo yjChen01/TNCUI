@@ -16,7 +16,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ShuttleStateComponent } from './shuttle-state/shuttle-state.component';
 import { LiftStateComponent } from './lift-state/lift-state.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
