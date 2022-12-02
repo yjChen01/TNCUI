@@ -47,7 +47,7 @@
               <td>{{ shuttle_system_arr[i].job_id }}</td>
               <td>
                 <div class="form-row">
-                  <div class="form-group col-md-7">
+                  <div class="form-group col-md-4">
                     <select class="form-control" #shuttle_act_ddl>
                       <option
                         *ngFor="let opt of shuttle_state_list"
@@ -57,7 +57,8 @@
                       </option>
                     </select>
                   </div>
-                  <div class="col-md-5">
+
+                  <div class="col-md-2">
                     <button
                       type="button"
                       class="btn btn-ia-blue"
