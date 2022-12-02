@@ -15,6 +15,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ShuttleStateComponent } from './shuttle-state/shuttle-state.component';
 import { LiftStateComponent } from './lift-state/lift-state.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { LiftStateComponent } from './lift-state/lift-state.component';
     HttpClientModule,
     FormsModule,
     NgxPaginationModule ,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

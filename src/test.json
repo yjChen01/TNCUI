@@ -195,7 +195,7 @@
       "lifter_a1": false,
       "lifter_a2": false
     },
-    "state": -1
+    "state": 0
   },
   "task_executors": {
     "task_executor_a0": {

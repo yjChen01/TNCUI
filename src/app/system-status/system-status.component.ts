@@ -35,7 +35,8 @@ export class SystemStatusComponent {
 
   constructor(private http: HttpClient) {
     http
-      .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
+      // .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
+      .get<EQStatus>('/test.json')
       .subscribe((data_result) => {
         this.shuttle_system = data_result.task_executors;
         this.lift_system = data_result.system.lifters;

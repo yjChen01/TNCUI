@@ -37,7 +37,8 @@ export class HeaderComponent {
     this.current_route =location.path().replace('/','');
     // console.log(this.current_route);
     http
-      .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
+      // .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
+      .get<EQStatus>('/test.json')
       .subscribe((data_result) => {
         this.countPLCerror(data_result);
         this.SetDataResult(data_result);
@@ -50,7 +51,8 @@ export class HeaderComponent {
 
       this.intervalId=setInterval(() => {
       http
-        .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
+        // .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
+        .get<EQStatus>('/test.json')
         .subscribe((data_result) => {
           this.countPLCerror(data_result);
           this.SetDataResult(data_result);
