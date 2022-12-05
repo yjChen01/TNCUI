@@ -5,6 +5,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { elementAt } from 'rxjs';
 import { EQStatus, Shuttle, Lift } from '../eqstatus';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { LoginGuardService } from '../services/login-guard.service';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -32,7 +34,7 @@ export class HeaderComponent {
 
   current_route:string;
 
-  constructor(private http: HttpClient,private location: Location) {
+  constructor(private http: HttpClient,private location: Location,private authenticationService: LoginGuardService,) {
 
     this.current_route =location.path().replace('/','');
     // console.log(this.current_route);
@@ -132,5 +134,9 @@ export class HeaderComponent {
     else{
       return 'not_current_title';
     }
+  }
+
+  logout(): void {
+    this.authenticationService.logout();
   }
 }
