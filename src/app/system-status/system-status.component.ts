@@ -1,6 +1,8 @@
+import { StationStatusDialogComponent } from './../station-status-dialog/station-status-dialog.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { EQStatus, TaskExecutor } from '../eqstatus';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-system-status',
@@ -33,7 +35,7 @@ export class SystemStatusComponent {
   shuttle_count:number=0;
   lift_count:number=0;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,public dialog:MatDialog) {
     http
       .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
       .subscribe((data_result) => {
@@ -224,5 +226,9 @@ export class SystemStatusComponent {
       console.log(body);
       this.send_task_api(body);
     }
+  }
+
+  showStatinoStatusDialog(){
+    this.dialog.open(StationStatusDialogComponent);
   }
 }
