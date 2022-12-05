@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ShuttleStateComponent } from './shuttle-state/shuttle-state.component';
 import { LiftStateComponent } from './lift-state/lift-state.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { StationStatusDialogComponent } from './station-status-dialog/station-status-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     WelcomeComponent,
     ShuttleStateComponent,
     LiftStateComponent,
+    StationStatusDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,5 +42,6 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
   providers: [],
   bootstrap: [AppComponent],
+  entryComponents: [StationStatusDialogComponent]
 })
 export class AppModule {}
