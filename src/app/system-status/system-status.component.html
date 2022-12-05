@@ -47,8 +47,8 @@
               <td>{{ shuttle_system_arr[i].job_id }}</td>
               <td>
                 <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <select class="form-control" #shuttle_act_ddl>
+                  <div class="form-group col-md-7">
+                    <select class="form-control" #shuttle_act_ddl (change)="showStatinoStatusDialog(shuttle_act_ddl.value,shuttle_name_arr[i])">
                       <option
                         *ngFor="let opt of shuttle_state_list"
                         [value]="opt.key"
@@ -58,7 +58,7 @@
                     </select>
                   </div>
 
-                  <div class="col-md-2">
+                  <div class="col-md-5">
                     <button
                       type="button"
                       class="btn btn-ia-blue"
@@ -142,7 +142,6 @@
     </div>
   </div>
 </div>
-<button mat-raised-button color="primary" (click)="showStatinoStatusDialog()">test</button>
 
 <script src="/assets/js/jquery-3.3.1.min.js"></script>
 <script src="/assets/js/popper.min.js"></script>

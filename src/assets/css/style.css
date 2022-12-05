@@ -707,6 +707,21 @@ ul.tree, ul.tree_sub {
             .btn.btn-ia-blue .icon i {
               color: #1C5098; }
 
+              .btn.btn-ia-red {
+                background: #c52c2c;
+                border-color: #c52c2c;
+                color: #fff; }
+                .btn.btn-ia-red:hover, .btn.btn-ia-red:focus {
+                  border-color: #972121 !important;
+                  background: #972121 !important; }
+                .btn.btn-ia-red.btn-link {
+                  background: transparent;
+                  color: #fff;
+                  border: none;
+                  -webkit-box-shadow: none;
+                  box-shadow: none; }
+                .btn.btn-ia-red .icon i {
+                  color: #c52c2c; }
 
 /*------------------------checkbox--------------------------------*/
 

@@ -228,7 +228,16 @@ export class SystemStatusComponent {
     }
   }
 
-  showStatinoStatusDialog(){
-    this.dialog.open(StationStatusDialogComponent);
+  showStatinoStatusDialog(ddl_val:number,eq_name:string){
+    if(ddl_val==2){
+      this.dialog.open(StationStatusDialogComponent,{
+        data:{
+          EQ_name:eq_name
+        }
+      });
+    }
+  }
+  aaa(a:number){
+    console.log(a);
   }
 }

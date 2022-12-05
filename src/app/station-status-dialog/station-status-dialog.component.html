@@ -1,1 +1,38 @@
-<p>station-status-dialog works!</p>
+<h2 mat-dialog-title>指定移動目標位置</h2>
+
+<mat-dialog-content class="post-form">
+  <label class="col-md-6 pt-2 pr-2" style="color: #1C5098; font-weight: bolder">{{
+    EQ_name
+  }}</label>
+  <div class="form-row d-flex mt-2">
+    <label class="col-md-6 pt-2 pr-2">row:</label>
+    <div class="form-group col-md-6">
+      <select class="form-control" #row>
+        <option *ngFor="let _ of [].constructor(5); let i = index" [value]="i">
+          {{ i }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="form-row d-flex">
+    <label class="col-md-6 pt-2 pr-2">layer:</label>
+    <div class="form-group col-md-6">
+      <select class="form-control" #layer>
+        <option *ngFor="let _ of [].constructor(89); let i = index" [value]="i">
+          {{ i }}
+        </option>
+      </select>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button
+    type="button"
+    class="btn btn-ia-blue"
+    mat-button
+    (click)="show_comfirm_dialog(EQ_name,row.value,layer.value)"
+  >
+    執行
+  </button>
+</mat-dialog-actions>

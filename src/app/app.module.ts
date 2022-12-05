@@ -17,6 +17,7 @@ import { ShuttleStateComponent } from './shuttle-state/shuttle-state.component';
 import { LiftStateComponent } from './lift-state/lift-state.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { StationStatusDialogComponent } from './station-status-dialog/station-status-dialog.component';
+import { ManualMoveConfrimDialogComponent } from './manual-move-confrim-dialog/manual-move-confrim-dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { StationStatusDialogComponent } from './station-status-dialog/station-st
     ShuttleStateComponent,
     LiftStateComponent,
     StationStatusDialogComponent,
+    ManualMoveConfrimDialogComponent,
   ],
   imports: [
     BrowserModule,
