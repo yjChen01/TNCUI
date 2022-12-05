@@ -64,8 +64,14 @@ export class ErrorExceptComponent  {
 
     this.http
       .post<any>('http://192.168.214.87:9080/execute_command',body,options)
-      .subscribe((data_result) => {
-        console.log(data_result);
+      .subscribe({
+        next: (data_result) => {
+          alert(data_result);
+        },
+        error:(err)=>{
+          // console.log(err.message);
+          alert('api連線錯誤: \n'+err.message);
+        }
       });
   }
 
