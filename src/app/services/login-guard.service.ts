@@ -1,29 +1,70 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { throwError } from 'rxjs';
 import { AuthenticationClient } from '../clients/authentication.client';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginGuardService {
   private tokenKey = 'token';
 
-  constructor(private router: Router,private authenticationClient: AuthenticationClient) {}
+  constructor(private router: Router, private http: HttpClient) {}
 
   public login(username: string, password: string): void {
-    this.authenticationClient.login(username, password).subscribe((token) => {
-      localStorage.setItem(this.tokenKey, token);
-      this.router.navigate(['/SystemStatus']);
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
     });
+    let options = {
+      headers,
+    };
+
+    let body = {
+      user_name: username,
+      user_password: password,
+      user_mail: '',
+    };
+    this.http
+      .post<any>('https://localhost:7285/Login', body, options)
+      .subscribe((data_result) => {
+        console.log(data_result);
+        if (data_result==1) {
+          localStorage.setItem(this.tokenKey, 'fqoewifhoqeuifhoiudhvo');
+          this.router.navigate(['/SystemStatus']);
+        }
+        else{
+          alert('user not found, please register');
+          this.router.navigate(['/Register']);
+        }
+      });
   }
 
   public register(username: string, email: string, password: string): void {
-    this.authenticationClient
-      .register(username, email, password)
-      .subscribe((token) => {
-        localStorage.setItem(this.tokenKey, token);
-        this.router.navigate(['/']);
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    let options = {
+      headers,
+    };
+
+    let body = {
+      user_name: username,
+      user_password: password,
+      user_mail: email,
+    };
+    this.http
+      .post<any>('https://localhost:7285/Register', body, options)
+      .subscribe((data_result) => {
+        console.log(data_result);
+        if (data_result==1) {
+          alert('Register success, please login');
+          this.router.navigate(['/Login']);
+        }
+        else{
+          alert('user name has repeated, please try another name');
+          this.router.navigate(['/Register']);
+        }
       });
   }
 
@@ -40,5 +81,4 @@ export class LoginGuardService {
   public getToken(): string | null {
     return this.isLoggedIn() ? localStorage.getItem(this.tokenKey) : null;
   }
-
 }
