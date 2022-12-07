@@ -13,23 +13,23 @@ const routes: Routes = [
   {
     path: 'SystemStatus',
     component: SystemStatusComponent,
-    canActivate: [AuthGuard],
+
   },
   {
     path: 'StorageStatus',
     component: StorageStatusComponent,
-    canActivate: [AuthGuard],
+
   },
   {
     path: 'PLCStatus',
     component: PLCStatusComponent,
-    canActivate: [AuthGuard],
+
   },
-  { path: 'Error', component: ErrorExceptComponent, canActivate: [AuthGuard] },
+  { path: 'Error', component: ErrorExceptComponent },
   {
     path: 'BillQuery',
     component: BillQueryComponent,
-    canActivate: [AuthGuard],
+
   },
   { path: 'Welcome', component: WelcomeComponent },
   { path: 'Register', component: RegisterComponent },
