@@ -12,7 +12,7 @@ export class AuthenticationClient {
 
   public login(username: string, password: string): Observable<string> {
     return this.http.post(
-      environment.apiUrl + '/login',
+      'https://localhost:7285/login',
       {
         username: username,
         password: password,
@@ -27,7 +27,7 @@ export class AuthenticationClient {
     password: string
   ): Observable<string> {
     return this.http.post(
-      environment.apiUrl + '/register',
+      'https://localhost:7285/register',
       {
         username: username,
         email: email,
