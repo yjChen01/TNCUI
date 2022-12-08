@@ -933,6 +933,21 @@ a {
     color: #e74a3b;
 }
 
+.icon-yellow-to-gray{
+    animation: icon-yellow-to-gray-blinking 1s infinite;
+}
+
+
+@keyframes icon-yellow-to-gray-blinking {
+    from {
+        color: #666666;
+    }
+
+    to {
+        color: #eeea19;
+    }
+}
+
 .icon-red-to-gray{
     animation: icon-red-to-gray-blinking 1s infinite;
 }

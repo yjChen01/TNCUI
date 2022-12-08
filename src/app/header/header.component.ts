@@ -75,10 +75,10 @@ export class HeaderComponent {
       return 'icon-green-to-gray';
     } else if (state == 1) {
       this.systemstate_word = '停止中';
-      return 'icon-blue-to-gray';
+      return 'icon-yellow-to-gray';
     } else if ((state = 2)) {
-      this.systemstate_word = '停止';
-      return 'icon-red-to-gray';
+      this.systemstate_word = '運行中';
+      return 'icon-blue-to-gray';
     } else {
       this.systemstate_word = '離線';
       return 'icon-keep-gray';
