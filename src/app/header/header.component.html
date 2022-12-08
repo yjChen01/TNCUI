@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="pt-2 col-12 pr-5">
-          <a href="#" class="statetitle">
+          <a href="/SystemStatus" class="statetitle">
             <span
               data-toggle="tooltip"
               data-placement="bottom"
@@ -14,7 +14,7 @@
               系統狀態 : {{ systemstate_word }}
             </span>
           </a>
-          <a href="#" class="statetitle">
+          <a href="/Error" class="statetitle">
             <span
               data-toggle="tooltip"
               data-placement="bottom"
@@ -27,7 +27,7 @@
               訂單狀態
             </span>
           </a>
-          <a href="#" class="statetitle">
+          <a href="/PLCStatus" class="statetitle">
             <span
               data-toggle="tooltip"
               data-placement="bottom"
@@ -40,10 +40,9 @@
             </span>
           </a>
           <div class="float-right">
-            <a href="#" class=""
-              ><span class="mr-2 icon-user"></span>
-              <span class="d-none d-md-inline-block">iamech</span></a
-            >
+            <!-- <a href="#" class=""></a> -->
+            <span class="mr-2 icon-user"></span>
+            <span class="d-none d-md-inline-block">{{ username }}</span>
             <span class="mx-md-2 d-inline-block"></span>
             <!-- <a href="#" class=""
               ><span class="mr-2 icon-sign-out"></span>

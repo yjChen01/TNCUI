@@ -3,12 +3,12 @@
 <div class="container-fluid mt-3">
   <div>
     <button
-    [ngClass]="system_botton_class()"
+      [ngClass]="system_botton_class()"
       class="btn"
       style="width: 130px; font-size: 20px; font-weight: 700"
       (click)="system_action()"
     >
-      {{system_state_btn_txt}}
+      {{ system_state_btn_txt }}
     </button>
   </div>
 
@@ -21,7 +21,9 @@
       aria-expanded="true"
       aria-controls="collapseCardExample"
     >
-      <h6 class="m-0 font-weight-bold ia-subtitle">Shuttle</h6>
+      <h6 class="m-0 font-weight-bold ia-subtitle" style="font-size: 25px">
+        Shuttle
+      </h6>
     </a>
     <!-- Card Content - Collapse -->
     <div class="collapse show" id="ShuttleCard">
@@ -48,7 +50,16 @@
               <td>
                 <div class="form-row">
                   <div class="form-group col-md-7">
-                    <select class="form-control" #shuttle_act_ddl (change)="showStatinoStatusDialog(shuttle_act_ddl.value,shuttle_name_arr[i])">
+                    <select
+                      class="form-control"
+                      #shuttle_act_ddl
+                      (change)="
+                        showStatinoStatusDialog(
+                          shuttle_act_ddl.value,
+                          shuttle_name_arr[i]
+                        )
+                      "
+                    >
                       <option
                         *ngFor="let opt of shuttle_state_list"
                         [value]="opt.key"
@@ -62,7 +73,12 @@
                     <button
                       type="button"
                       class="btn btn-ia-blue"
-                      (click)="shuttle_action(shuttle_act_ddl.value,shuttle_name_arr[i])"
+                      (click)="
+                        shuttle_action(
+                          shuttle_act_ddl.value,
+                          shuttle_name_arr[i]
+                        )
+                      "
                     >
                       執行
                     </button>
@@ -85,7 +101,9 @@
       aria-expanded="true"
       aria-controls="collapseCardExample"
     >
-      <h6 class="m-0 font-weight-bold ia-subtitle">Lifter</h6>
+      <h6 class="m-0 font-weight-bold ia-subtitle" style="font-size: 25px">
+        Lifter
+      </h6>
     </a>
     <!-- Card Content - Collapse -->
     <div class="collapse show" id="Lifter">

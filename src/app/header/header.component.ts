@@ -35,10 +35,13 @@ export class HeaderComponent {
 
   current_route:string;
 
+  username:string;
+
   constructor(private http: HttpClient,private location: Location,private authenticationService: LoginGuardService,) {
 
     this.current_route =location.path().replace('/','');
     // console.log(this.current_route);
+    this.username=localStorage.getItem('username');
     http
       .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
       .subscribe((data_result) => {
