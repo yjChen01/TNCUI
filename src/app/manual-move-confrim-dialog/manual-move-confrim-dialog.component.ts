@@ -11,10 +11,10 @@ export class ManualMoveConfrimDialogComponent {
   get EQ_name() {
     return this.data.EQ_name;
   }
-  get Row() {
+  get Row() :number{
     return this.data.Row;
   }
-  get Layer() {
+  get Layer() :number{
     return this.data.Layer;
   }
   constructor(
@@ -50,7 +50,9 @@ export class ManualMoveConfrimDialogComponent {
       .subscribe({
         next: (data_result) => {
           console.log(data_result);
-          alert(data_result);
+          if(data_result.is_success==false){
+            alert(data_result.message);
+          }
           this.dialog.closeAll();
         },
         error:(err)=>{

@@ -120,7 +120,9 @@ export class SystemStatusComponent {
       .post<any>('http://192.168.214.87:9080/execute_command',body,options)
       .subscribe({
         next: (data_result) => {
-          alert(data_result);
+          if(data_result.is_success==false){
+            alert(data_result.message);
+          }
         },
         error:(err)=>{
           alert('api連線錯誤: \n'+err.message);
