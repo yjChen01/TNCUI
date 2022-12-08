@@ -16,6 +16,9 @@
       "es2020",
       "dom"
     ],
+    "paths": {
+      "@environment": ["./src/environments/environment"]
+    },
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {

@@ -1,6 +1,7 @@
 import { EQStatus, Shuttle, LayerInfo } from './../eqstatus';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnDestroy } from '@angular/core';
+import { environment } from '@environment';
 
 @Component({
   selector: 'app-storage-status',
@@ -154,7 +155,7 @@ export class StorageStatusComponent implements OnDestroy {
       layer: this.current_layer - 1,
     };
     http
-      .post<LayerInfo>('https://localhost:7285/GetStorageState', body, options)
+      .post<LayerInfo>(`${environment.api}/GetStorageState`, body, options)
       .subscribe((data_result) => {
         for (const [key, value] of Object.entries(data_result)) {
           this.storage_data[value.row_no] = value.row_state;

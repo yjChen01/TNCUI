@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '@environment';
 import { throwError } from 'rxjs';
 import { AuthenticationClient } from '../clients/authentication.client';
 
@@ -26,7 +27,7 @@ export class LoginGuardService {
       user_mail: '',
     };
     this.http
-      .post<any>('https://localhost:7285/Login', body, options)
+      .post<any>(`${environment.api}/Login`, body, options)
       .subscribe((data_result) => {
         console.log(data_result);
         if (data_result==1) {
@@ -54,7 +55,7 @@ export class LoginGuardService {
       user_mail: email,
     };
     this.http
-      .post<any>('https://localhost:7285/Register', body, options)
+      .post<any>(`${environment.api}/Register`, body, options)
       .subscribe((data_result) => {
         console.log(data_result);
         if (data_result==1) {

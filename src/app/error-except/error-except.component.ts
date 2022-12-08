@@ -2,6 +2,7 @@ import { StorageStatusComponent } from './../storage-status/storage-status.compo
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Bill, JobBill } from '../job-bill';
+import { environment } from '@environment';
 
 @Component({
   selector: 'app-error-except',
@@ -35,7 +36,7 @@ export class ErrorExceptComponent  {
       "isAllData":this.isAll,
       "job_id":v_job_id
     };
-    http.post<JobBill>('https://localhost:7285/GetAllBill', body, options).subscribe(data_result=>{
+    http.post<JobBill>(`${environment.api}/GetAllBill`, body, options).subscribe(data_result=>{
       this.data=data_result.bills;
       this.total_line_count=data_result.total_page_count;
     })

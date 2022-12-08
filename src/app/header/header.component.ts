@@ -6,6 +6,7 @@ import { elementAt } from 'rxjs';
 import { EQStatus, Shuttle, Lift } from '../eqstatus';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { LoginGuardService } from '../services/login-guard.service';
+import { environment } from '@environment';
 
 @Component({
   selector: 'app-header',
@@ -45,7 +46,7 @@ export class HeaderComponent {
         this.SetDataResult(data_result);
       });
     http
-      .get<boolean>('https://localhost:7285/GetErrorBillExists')
+      .get<boolean>(`${environment.api}/GetErrorBillExists`)
       .subscribe((data_result) => {
         this.billstate_light = data_result;
       });
@@ -58,7 +59,7 @@ export class HeaderComponent {
           this.SetDataResult(data_result);
         });
       http
-        .get<boolean>('https://localhost:7285/GetErrorBillExists')
+        .get<boolean>(`${environment.api}/GetErrorBillExists`)
         .subscribe((data_result) => {
           this.billstate_light = data_result;
         });
