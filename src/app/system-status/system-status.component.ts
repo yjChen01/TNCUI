@@ -153,7 +153,8 @@ export class SystemStatusComponent {
     if(this.system_state==0){
       // this.system_state=2;
       let body = {
-        task_name:'start'
+        task_name:'start',
+        task_param:''
       };
       this.send_task_api(body);
       console.log('開始系統');
@@ -161,7 +162,8 @@ export class SystemStatusComponent {
     else if(this.system_state==2){
       // this.system_state=0;
       let body = {
-        task_name:'stop'
+        task_name:'stop',
+        task_param:''
       };
       this.send_task_api(body);
       console.log('停止系統');

@@ -11,10 +11,10 @@ export class ManualMoveConfrimDialogComponent {
   get EQ_name() {
     return this.data.EQ_name;
   }
-  get Row() :number{
+  get Row(){
     return this.data.Row;
   }
-  get Layer() :number{
+  get Layer(){
     return this.data.Layer;
   }
   constructor(
@@ -30,8 +30,8 @@ export class ManualMoveConfrimDialogComponent {
 
     let v_task_param = {
       executor_name: this.EQ_name,
-      row: this.Row,
-      layer: this.Layer,
+      row: Number(this.Row),
+      layer: Number(this.Layer),
     };
 
     let body = {

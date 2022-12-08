@@ -50,6 +50,7 @@ export interface TaskExecutor {
 export interface LayerInfo {
   row_state:  { [key:number]: number[]};
 }
+
 // enum EQ_state_enum {
 //   未連接,
 //   維修,
