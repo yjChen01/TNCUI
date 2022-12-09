@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { EQStatus, TaskExecutor } from '../eqstatus';
 import { MatDialog } from '@angular/material/dialog';
+import { environment } from '@environment';
 
 @Component({
   selector: 'app-system-status',
@@ -37,7 +38,7 @@ export class SystemStatusComponent {
 
   constructor(private http: HttpClient,public dialog:MatDialog) {
     http
-      .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
+      .post<EQStatus>(`${environment.geneapi}/get_status`, '')
       .subscribe((data_result) => {
         this.shuttle_system = data_result.task_executors;
         this.lift_system = data_result.system.lifters;
@@ -117,7 +118,7 @@ export class SystemStatusComponent {
     };
 
     this.http
-      .post<any>('http://192.168.214.87:9080/execute_command',body,options)
+      .post<any>(`${environment.geneapi}/execute_command`,body,options)
       .subscribe({
         next: (data_result) => {
           if(data_result.is_success==false){

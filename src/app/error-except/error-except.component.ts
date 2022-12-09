@@ -64,7 +64,7 @@ export class ErrorExceptComponent  {
     };
 
     this.http
-      .post<any>('http://192.168.214.87:9080/execute_command',body,options)
+      .post<any>(`${environment.geneapi}/execute_command`,body,options)
       .subscribe({
         next: (data_result) => {
           if(data_result.is_success==false){

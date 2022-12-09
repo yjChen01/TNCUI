@@ -43,7 +43,7 @@ export class HeaderComponent {
     // console.log(this.current_route);
     this.username=localStorage.getItem('username');
     http
-      .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
+      .post<EQStatus>(`${environment.geneapi}/get_status`, '')
       .subscribe((data_result) => {
         this.countPLCerror(data_result);
         this.SetDataResult(data_result);
@@ -56,7 +56,7 @@ export class HeaderComponent {
 
       this.intervalId=setInterval(() => {
       http
-        .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
+        .post<EQStatus>(`${environment.geneapi}/get_status`, '')
         .subscribe((data_result) => {
           this.countPLCerror(data_result);
           this.SetDataResult(data_result);

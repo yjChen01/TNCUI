@@ -164,7 +164,7 @@ export class StorageStatusComponent implements OnDestroy {
   }
   changeLayerShuttle(http: HttpClient) {
     http
-      .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
+      .post<EQStatus>(`${environment.geneapi}/get_status`, '')
       .subscribe((data_result) => {
         this.checkLayerHaveShuttle(data_result);
       });

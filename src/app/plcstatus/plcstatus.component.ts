@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { environment } from '@environment';
 import { EQStatus, Shuttle, Lift } from '../eqstatus';
 
 @Component({
@@ -13,7 +14,7 @@ export class PLCStatusComponent {
 
   constructor(private http: HttpClient) {
     http
-    .post<EQStatus>('http://192.168.214.87:9080/get_status', '')
+    .post<EQStatus>(`${environment.geneapi}/get_status`, '')
     .subscribe((data_result) => {
       this.shuttles = data_result.shuttles;
       this.lifts = data_result.lifters;

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { environment } from '@environment';
 
 @Component({
   selector: 'app-manual-move-confrim-dialog',
@@ -46,7 +47,7 @@ export class ManualMoveConfrimDialogComponent {
     };
 
     this.http
-      .post<any>('http://192.168.214.87:9080/execute_command', body, options)
+      .post<any>(`${environment.geneapi}/execute_command`, body, options)
       .subscribe({
         next: (data_result) => {
           console.log(data_result);
