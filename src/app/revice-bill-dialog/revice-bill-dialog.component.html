@@ -18,8 +18,8 @@
     <label class="col-md-6 pt-2 pr-2">column:</label>
     <div class="form-group col-md-6">
       <select class="form-control" #column>
-        <option *ngFor="let _ of [].constructor(89); let i = index" [value]="i">
-          {{ i }}
+        <option *ngFor="let opt of column_dropdown_list;" [value]="opt">
+          {{ opt }}
         </option>
       </select>
     </div>
