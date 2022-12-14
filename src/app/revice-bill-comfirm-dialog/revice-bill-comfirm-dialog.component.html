@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>確認送出指令</h2>
+
+<mat-dialog-content class="post-form">
+  <div style="font-weight: bolder; text-align: center">job_id:{{ Job_id }}</div>
+  <div style="text-align: center">已指定復歸點:({{ fix_from_coord }})</div>
+  <div style="text-align: center;color: red;">請務必確認物料箱{{Bin_id}}的位置已移動至復歸點({{ fix_from_coord }})</div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button
+    type="button"
+    class="btn btn-ia-blue mr-2"
+    mat-button
+    (click)="confirm_manual_job()"
+  >
+    確認
+  </button>
+  <button mat-button mat-dialog-close type="button" class="btn btn-ia-red">
+    返回
+  </button>
+</mat-dialog-actions>

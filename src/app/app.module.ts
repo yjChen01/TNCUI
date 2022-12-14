@@ -26,6 +26,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { RegisterComponent } from './register/register.component';
+import { ReviceBillDialogComponent } from './revice-bill-dialog/revice-bill-dialog.component';
+import { ReviceBillComfirmDialogComponent } from './revice-bill-comfirm-dialog/revice-bill-comfirm-dialog.component';
+import { OriginBillResendConfirmDialogComponent } from './origin-bill-resend-confirm-dialog/origin-bill-resend-confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,9 @@ import { RegisterComponent } from './register/register.component';
     StationStatusDialogComponent,
     ManualMoveConfrimDialogComponent,
     RegisterComponent,
+    ReviceBillDialogComponent,
+    ReviceBillComfirmDialogComponent,
+    OriginBillResendConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +69,6 @@ import { RegisterComponent } from './register/register.component';
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [StationStatusDialogComponent]
+  entryComponents: [StationStatusDialogComponent,ReviceBillDialogComponent,OriginBillResendConfirmDialogComponent],
 })
 export class AppModule {}

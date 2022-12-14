@@ -1,8 +1,11 @@
+import { OriginBillResendConfirmDialogComponent } from './../origin-bill-resend-confirm-dialog/origin-bill-resend-confirm-dialog.component';
+import { ReviceBillDialogComponent } from './../revice-bill-dialog/revice-bill-dialog.component';
 import { StorageStatusComponent } from './../storage-status/storage-status.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Bill, JobBill } from '../job-bill';
 import { environment } from '@environment';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-error-except',
@@ -18,7 +21,7 @@ export class ErrorExceptComponent  {
   total_line_count:number;
 
 
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient,public dialog:MatDialog) {
     this.GetErrorBill(http,'');
   }
 
@@ -78,31 +81,24 @@ export class ErrorExceptComponent  {
       });
   }
 
-  origin_bill_resend(v_job_id:string){
-    let v_task_param={
-      job_id : v_job_id
-    }
-
-    let body = {
-      task_name:'resend_job',
-      task_param:v_task_param
-    };
-    console.log(body);
-    this.send_task_api(body);
+  origin_bill_resend(v_job_id:string,v_from_coord:string,v_to_coord:string,v_bin_id:string){
+    this.dialog.open(OriginBillResendConfirmDialogComponent,{
+      data:{
+        job_id:v_job_id,
+        from_coord:v_from_coord,
+        to_coord:v_to_coord,
+        bin_id:v_bin_id
+      }
+    });
   }
 
-  revise_bill(v_job_id:string,v_from_coord:string){
-    let v_task_param={
-      job_id : v_job_id,
-      from_coord:v_from_coord
-    }
-
-    let body = {
-      task_name:'correct_job',
-      task_param:v_task_param
-    };
-    console.log(body);
-    this.send_task_api(body);
+  revise_bill(v_job_id:string,v_bin_id:string){
+    this.dialog.open(ReviceBillDialogComponent,{
+      data:{
+        job_id:v_job_id,
+        bin_id:v_bin_id
+      }
+    });
   }
 
 }
