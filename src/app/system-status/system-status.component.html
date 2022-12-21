@@ -53,12 +53,6 @@
                     <select
                       class="form-control"
                       #shuttle_act_ddl
-                      (change)="
-                        showStatinoStatusDialog(
-                          shuttle_act_ddl.value,
-                          shuttle_name_arr[i]
-                        )
-                      "
                     >
                       <option
                         *ngFor="let opt of shuttle_state_list"

@@ -877,7 +877,9 @@ a {
 .ia-inbound-storage{
     background-color:#d9ead3ff;
 }
-
+.ia-maintain-storage{
+  background-color:rgb(234, 241, 130);
+}
 .ia-shuttle{
     background-color:#f9cb9cff;
 }

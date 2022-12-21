@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'https://localhost:7285',
+  api: 'http://192.168.214.88:5000',
   geneapi:'http://192.168.214.88:9080',
 };
 

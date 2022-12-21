@@ -210,7 +210,7 @@ export class SystemStatusComponent {
       this.send_task_api(body);
     }
     else if(task_type==2){//手動
-
+      this.showStatinoStatusDialog(shuttle_name);
     }
     else if(task_type==3){//至充電站
       let v_task_param={
@@ -238,14 +238,12 @@ export class SystemStatusComponent {
     }
   }
 
-  showStatinoStatusDialog(ddl_val:number,eq_name:string){
-    if(ddl_val==2){
+  showStatinoStatusDialog(eq_name:string){
       this.dialog.open(StationStatusDialogComponent,{
         data:{
           EQ_name:eq_name
         }
       });
-    }
   }
   aaa(a:number){
     console.log(a);
