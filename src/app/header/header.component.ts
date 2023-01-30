@@ -1,3 +1,4 @@
+import { RebootConfirmDialogComponent } from './../reboot-confirm-dialog/reboot-confirm-dialog.component';
 import { Routes } from '@angular/router';
 import { style } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
@@ -7,6 +8,7 @@ import { EQStatus, Shuttle, Lift } from '../eqstatus';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { LoginGuardService } from '../services/login-guard.service';
 import { environment } from '@environment';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-header',
@@ -37,7 +39,7 @@ export class HeaderComponent {
 
   username:string;
 
-  constructor(private http: HttpClient,private location: Location,private authenticationService: LoginGuardService,) {
+  constructor(private http: HttpClient,private location: Location,private authenticationService: LoginGuardService,public dialog:MatDialog) {
 
     this.current_route =location.path().replace('/','');
     // console.log(this.current_route);
@@ -142,5 +144,10 @@ export class HeaderComponent {
 
   logout(): void {
     this.authenticationService.logout();
+  }
+
+  reboot(){
+    this.dialog.open(RebootConfirmDialogComponent,{
+    });
   }
 }

@@ -1,3 +1,4 @@
+import { FinishBillDialogComponent } from './../finish-bill-dialog/finish-bill-dialog.component';
 import { OriginBillResendConfirmDialogComponent } from './../origin-bill-resend-confirm-dialog/origin-bill-resend-confirm-dialog.component';
 import { ReviceBillDialogComponent } from './../revice-bill-dialog/revice-bill-dialog.component';
 import { StorageStatusComponent } from './../storage-status/storage-status.component';
@@ -101,4 +102,12 @@ export class ErrorExceptComponent  {
     });
   }
 
+  finish_bill(v_job_id:string,v_bin_id:string){
+    this.dialog.open(FinishBillDialogComponent,{
+      data:{
+        job_id:v_job_id,
+        bin_id:v_bin_id
+      }
+    });
+  }
 }

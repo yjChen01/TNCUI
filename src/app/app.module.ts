@@ -29,6 +29,8 @@ import { RegisterComponent } from './register/register.component';
 import { ReviceBillDialogComponent } from './revice-bill-dialog/revice-bill-dialog.component';
 import { ReviceBillComfirmDialogComponent } from './revice-bill-comfirm-dialog/revice-bill-comfirm-dialog.component';
 import { OriginBillResendConfirmDialogComponent } from './origin-bill-resend-confirm-dialog/origin-bill-resend-confirm-dialog.component';
+import { FinishBillDialogComponent } from './finish-bill-dialog/finish-bill-dialog.component';
+import { RebootConfirmDialogComponent } from './reboot-confirm-dialog/reboot-confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { OriginBillResendConfirmDialogComponent } from './origin-bill-resend-con
     ReviceBillDialogComponent,
     ReviceBillComfirmDialogComponent,
     OriginBillResendConfirmDialogComponent,
+    FinishBillDialogComponent,
+    RebootConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +73,6 @@ import { OriginBillResendConfirmDialogComponent } from './origin-bill-resend-con
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [StationStatusDialogComponent,ReviceBillDialogComponent,OriginBillResendConfirmDialogComponent],
+  entryComponents: [StationStatusDialogComponent,ReviceBillDialogComponent,OriginBillResendConfirmDialogComponent,FinishBillDialogComponent,RebootConfirmDialogComponent],
 })
 export class AppModule {}
