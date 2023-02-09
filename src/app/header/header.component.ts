@@ -2,7 +2,7 @@ import { RebootConfirmDialogComponent } from './../reboot-confirm-dialog/reboot-
 import { Routes } from '@angular/router';
 import { style } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { elementAt } from 'rxjs';
 import { EQStatus, Shuttle, Lift } from '../eqstatus';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
@@ -38,6 +38,11 @@ export class HeaderComponent {
   current_route:string;
 
   username:string;
+
+  navbarfixed:boolean=false;
+  @HostListener('window:scroll',['$event']) onscroll(){
+    this.navbarfixed=window.pageYOffset >= 250;
+  }
 
   constructor(private http: HttpClient,private location: Location,private authenticationService: LoginGuardService,public dialog:MatDialog) {
 

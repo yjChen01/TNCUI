@@ -17,3 +17,16 @@
 .not_current_title a{
   color:black !important;
 }
+
+.fixed{
+  position: fixed;
+  width:100%;
+  transition:0.2s linear;
+  top:0px;
+}
+
+.notfixed{
+position: static;
+transition: 0.2s linear;
+top: -50px;
+}
