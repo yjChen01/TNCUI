@@ -2,6 +2,7 @@ import { EQStatus, Shuttle, LayerInfo, TaskExecutor,Shuttle_class } from './../e
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnDestroy } from '@angular/core';
 import { environment } from '@environment';
+import { StorageList } from '../job-bill';
 
 @Component({
   selector: 'app-storage-status',
@@ -28,6 +29,11 @@ export class StorageStatusComponent implements OnDestroy {
   current_layer: number = 1;
 
   storage_data: number[][] = [[]];
+
+  //搜尋儲位狀態用變數
+  data: StorageList[]=[];
+  storage_serch_storage_id:string='';
+  storage_serch_bin_id:string='';
 
   intv:any;
    // hey:LayerInfo;
@@ -175,5 +181,22 @@ export class StorageStatusComponent implements OnDestroy {
       .subscribe((data_result) => {
         this.checkLayerHaveShuttle(data_result);
       });
+  }
+
+  SearchStorageData(v_storage_id:string,v_bin_id:string){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    let options = {
+      headers
+    };
+
+    let body={
+      "storage_id":v_storage_id,
+      "bin_id":v_bin_id
+    };
+    this.http.post<StorageList[]>(`${environment.api}/GetStorageInfo`, body, options).subscribe(data_result=>{
+      this.data=data_result;
+    })
   }
 }

@@ -21,3 +21,12 @@ export interface Bill {
   update_date: string;
   create_date: string;
 }
+
+export interface StorageList{
+  storage_id: string;
+  priority: number;
+  state:number;
+  is_blocked:number;
+  is_maintained:number;
+  bin_id: string;
+}

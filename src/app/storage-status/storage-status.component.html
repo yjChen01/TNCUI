@@ -1,6 +1,70 @@
 <app-header></app-header>
 
 <div>
+
+  <div class="form-row d-flex">
+    <label class="col-md-1 pt-2 pr-2 text-right">儲位編號</label>
+    <div class="form-group col-md-2">
+      <input
+        type="text"
+        placeholder="請輸入job_id"
+        #v_storage_serch_storage_id
+        [value]="storage_serch_storage_id"
+        (keyup)="storage_serch_storage_id = v_storage_serch_storage_id.value"
+      />
+    </div>
+    <label class="col-md-1 pt-2 pr-2 text-right">箱號</label>
+    <div class="form-group col-md-2">
+      <input
+        type="text"
+        placeholder="請輸入bin_id"
+        #v_storage_serch_bin_id
+        [value]="storage_serch_bin_id"
+        (keyup)="storage_serch_bin_id = v_storage_serch_bin_id.value"
+      />
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-ia-blue" (click)="SearchStorageData(v_storage_serch_storage_id.value, v_storage_serch_bin_id.value)">搜尋</button>
+    </div>
+    <div class="card-body">
+      <div class="mt-4 mb-4">
+        <div>
+          <div class="table-responsive">
+            <div class="">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>storage_id</th>
+                    <th>priority</th>
+                    <th>state</th>
+                    <th>is_blocked</th>
+                    <th>is_maintained</th>
+                    <th>bin_id</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="let item of data"
+                  >
+                    <td>{{ item.storage_id }}</td>
+                    <td>{{ item.priority }}</td>
+                    <td>{{ item.state }}</td>
+                    <td>{{ item.is_blocked }}</td>
+                    <td>{{ item.is_maintained }}</td>
+                    <td>{{ item.bin_id }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</div>
+<hr style="border: 1.5px solid rgb(156, 156, 156);"/>
+<div>
   <div class="form-row">
     <label class="col-md-1 pt-2 pr-2 text-right">樓層</label>
     <div class="form-group col-md-2">
