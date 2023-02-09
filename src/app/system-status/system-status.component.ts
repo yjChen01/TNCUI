@@ -62,6 +62,32 @@ export class SystemStatusComponent {
       });
   }
 
+  refresh_EQ_data(http:HttpClient){
+    http
+    .post<EQStatus>(`${environment.geneapi}/get_status`, '')
+    .subscribe((data_result) => {
+      this.shuttle_system = data_result.task_executors;
+      this.lift_system = data_result.system.lifters;
+      this.system_state=data_result.system.state;
+
+      let v_shuttle_system_arr: TaskExecutor[] = [];
+      let v_lift_system_arr: boolean[] = [];
+      for (const [key, value] of Object.entries(this.shuttle_system)) {
+        // console.log(`${key}: ${value}`);
+        v_shuttle_system_arr.push(value);
+        this.shuttle_name_arr.push(key);
+        // this.shuttle_count++;
+      }
+      for(const[key,value] of Object.entries(this.lift_system)){
+        v_lift_system_arr.push(value);
+        this.lift_name_arr.push(key);
+        // this.lift_count++;
+      }
+      this.shuttle_system_arr = v_shuttle_system_arr;
+      this.lift_system_arr=v_lift_system_arr;
+    });
+  }
+
   handle_EQ_data(data_result:EQStatus){
     this.shuttle_system = data_result.task_executors;
     this.lift_system = data_result.system.lifters;
@@ -172,6 +198,7 @@ export class SystemStatusComponent {
     else{
       console.log('系統停止中，無法切換');
     }
+    this.refresh_EQ_data(this.http);
   }
 
   lift_action(task_type:number,lift_name:string){
@@ -194,6 +221,7 @@ export class SystemStatusComponent {
     };
     console.log(body);
     this.send_task_api(body);
+    this.refresh_EQ_data(this.http);
   }
 
   shuttle_action(task_type:number,shuttle_name:string){
@@ -236,6 +264,7 @@ export class SystemStatusComponent {
       console.log(body);
       this.send_task_api(body);
     }
+    this.refresh_EQ_data(this.http);
   }
 
   showStatinoStatusDialog(eq_name:string){
