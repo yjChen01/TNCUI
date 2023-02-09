@@ -11,8 +11,18 @@
       (keyup)="search_job_id = m_job_id.value"
     />
   </div>
+  <label class="col-md-1 pt-2 pr-2 text-right">bin_id</label>
+  <div class="form-group col-md-2">
+    <input
+      type="text"
+      placeholder="請輸入bin_id"
+      #m_bin_id
+      [value]="search_bin_id"
+      (keyup)="search_bin_id = m_bin_id.value"
+    />
+  </div>
   <div class="col-md-3">
-    <button class="btn btn-ia-blue" (click)="SearchByJobid(m_job_id.value)">搜尋</button>
+    <button class="btn btn-ia-blue" (click)="SearchByJobid(m_job_id.value, m_bin_id.value)">搜尋</button>
   </div>
   <div class="ml-auto">
     <pagination-controls (pageChange)="SearchByPageNo($event)"></pagination-controls>
