@@ -38,7 +38,8 @@ export class ErrorExceptComponent  {
       "page_no":this.page_no,
       "page_size":this.page_size,
       "isAllData":this.isAll,
-      "job_id":v_job_id
+      "job_id":v_job_id,
+      "bin_id":''
     };
     http.post<JobBill>(`${environment.api}/GetAllBill`, body, options).subscribe(data_result=>{
       this.data=data_result.bills;
