@@ -58,3 +58,19 @@ export interface LayerInfo {
 //   任務,
 //   異常,
 // }
+export class Shuttle_class implements Shuttle {
+  column:           number;
+  is_auto:          boolean;
+  is_disconnected:  number;
+  is_error:         number;
+  is_fully_charged: number;
+  is_heartbroken:   number;
+  is_idle:          number;
+  is_loaded:        number;
+  layer:            number;
+  row:              number;
+  task_id:          number;
+  task_name:        number;
+  task_param:       number;
+
+}

@@ -1,4 +1,4 @@
-import { EQStatus, Shuttle, LayerInfo } from './../eqstatus';
+import { EQStatus, Shuttle, LayerInfo, TaskExecutor,Shuttle_class } from './../eqstatus';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnDestroy } from '@angular/core';
 import { environment } from '@environment';
@@ -82,11 +82,18 @@ export class StorageStatusComponent implements OnDestroy {
   checkLayerHaveShuttle(EQ: EQStatus) {
     let shuttle: Shuttle[] = [];
     let hasshuttle = 0;
-    //取得所有shuttle陣列
-    for (const [key, value] of Object.entries(EQ.shuttles)) {
-      shuttle.push(value);
+
+    for(const [key,value] of Object.entries(EQ.task_executors)){
+      let temp_task=new Shuttle_class();
+      console.log(value.coord);
+      temp_task.row=value.coord[0];
+      temp_task.column=value.coord[1];
+      temp_task.layer=value.coord[2];
+      temp_task.is_error=0;
+      // console.log(temp_task);
+      shuttle.push(temp_task);
     }
-    // console.log(shuttle);
+
     let layer_shuttle_array: number[][] = [[]];
     let temp_shuttle_state_arr: number[] = [0, 0, 0, 0, 0];
     let temp_column_arr: number[] = [-99, -99, -99, -99, -99];
