@@ -29,9 +29,12 @@ export class FinishBillDialogComponent {
       .post<any>(`${environment.geneapi}/execute_command`,body,options)
       .subscribe({
         next: (data_result) => {
+          console.log(body);
           if(data_result.is_success==false){
             alert(data_result.message);
           }
+          this.dialog.closeAll();
+          location.reload();
         },
         error:(err)=>{
           alert('api連線錯誤: \n'+err.message);
@@ -39,12 +42,17 @@ export class FinishBillDialogComponent {
       });
   }
 
-  reboot(){
-    let body = {
-      task_name:'restart',
-      task_param:''
+  resend(){
+    let v_task_param = {
+      job_id: this.Job_id,
     };
+
+    let body = {
+      task_name: 'finish_job',
+      task_param: v_task_param,
+    };
+
     this.send_task_api(body);
-    console.log('重啟控制系統');
+    console.log('完成單據');
   }
 }
