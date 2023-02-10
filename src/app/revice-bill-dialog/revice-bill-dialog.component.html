@@ -9,7 +9,7 @@
     <div class="form-group col-md-6">
       <select class="form-control" #row>
         <option *ngFor="let _ of [].constructor(5); let i = index" [value]="i">
-          {{ i }}
+          {{ i+1 }}
         </option>
       </select>
     </div>
@@ -29,7 +29,7 @@
     <div class="form-group col-md-6">
       <select class="form-control" #layer>
         <option *ngFor="let _ of [].constructor(21); let i = index" [value]="i">
-          {{ i }}
+          {{ i+1 }}
         </option>
       </select>
     </div>

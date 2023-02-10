@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnDestroy } from '@angular/core';
 import { environment } from '@environment';
 import { StorageList } from '../job-bill';
+import { UniverseFunc } from '../universe-func';
 
 @Component({
   selector: 'app-storage-status',
@@ -34,6 +35,9 @@ export class StorageStatusComponent implements OnDestroy {
   data: StorageList[]=[];
   storage_serch_storage_id:string='';
   storage_serch_bin_id:string='';
+
+  toolfunc :UniverseFunc=new UniverseFunc();
+
 
   intv:any;
    // hey:LayerInfo;
@@ -91,7 +95,7 @@ export class StorageStatusComponent implements OnDestroy {
 
     for(const [key,value] of Object.entries(EQ.task_executors)){
       let temp_task=new Shuttle_class();
-      console.log(value.coord);
+      // console.log(value.coord);
       temp_task.row=value.coord[0];
       temp_task.column=value.coord[1];
       temp_task.layer=value.coord[2];
@@ -107,14 +111,14 @@ export class StorageStatusComponent implements OnDestroy {
     //檢查是否有shuttle在目標樓層，若有則將其row,col,state加入layer_shuttle_array[]中
     for (let i = 0; i < shuttle.length; i++) {
       if (shuttle[i].layer == this.current_layer) {
-        console.log('shuttle:' + i + ';col:' + shuttle[i].column);
+        // console.log('shuttle:' + i + ';col:' + shuttle[i].column);
 
         layer_shuttle_array.push([
           shuttle[i].row,
           shuttle[i].column,
           shuttle[i].is_error,
         ]);
-        console.log(layer_shuttle_array);
+        // console.log(layer_shuttle_array);
 
         // this.shuttle_row = shuttle[i].row;
         // this.shuttle_col_state = shuttle[i].is_error;
@@ -145,8 +149,8 @@ export class StorageStatusComponent implements OnDestroy {
     //最後將值放入實際使用的顯示陣列中
     this.shuttle_col=temp_column_arr;
     this.shuttle_col_state=temp_shuttle_state_arr;
-    console.log('col:'+this.shuttle_col);
-    console.log('state:'+this.shuttle_col_state);
+    // console.log('col:'+this.shuttle_col);
+    // console.log('state:'+this.shuttle_col_state);
     return hasshuttle;
   }
 
@@ -184,19 +188,38 @@ export class StorageStatusComponent implements OnDestroy {
   }
 
   SearchStorageData(v_storage_id:string,v_bin_id:string){
-    let headers = new HttpHeaders({
+    if(v_storage_id==='' && v_bin_id===''){
+      alert('請輸入儲位編號或箱號');
+    }
+    else{
+      let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
     let options = {
       headers
     };
 
+    let input_storage_id:string;
+    if(v_storage_id===''){
+      input_storage_id=v_storage_id;
+    }
+    else{
+      input_storage_id=this.toolfunc.transferCoordinateUserToSql(v_storage_id);
+    }
+
+    console.log(input_storage_id);
     let body={
-      "storage_id":v_storage_id,
+      "storage_id":input_storage_id,
       "bin_id":v_bin_id
     };
     this.http.post<StorageList[]>(`${environment.api}/GetStorageInfo`, body, options).subscribe(data_result=>{
+      for (let index = 0; index < data_result.length; index++) {
+        const element = data_result[index];
+        element.storage_id=this.toolfunc.transferCoordinateSqlToUser(element.storage_id);
+      }
       this.data=data_result;
     })
+    // console.log('testrsl:'+this.toolfunc.transferCoordinateUserToSql(v_storage_id));
+    }
   }
 }

@@ -1,3 +1,4 @@
+import { UniverseFunc } from './../universe-func';
 import { FinishBillDialogComponent } from './../finish-bill-dialog/finish-bill-dialog.component';
 import { OriginBillResendConfirmDialogComponent } from './../origin-bill-resend-confirm-dialog/origin-bill-resend-confirm-dialog.component';
 import { ReviceBillDialogComponent } from './../revice-bill-dialog/revice-bill-dialog.component';
@@ -21,6 +22,7 @@ export class ErrorExceptComponent  {
   search_job_id:string='';
   total_line_count:number;
 
+  toolfunc:UniverseFunc =new UniverseFunc();
 
   constructor(private http:HttpClient,public dialog:MatDialog) {
     this.GetErrorBill(http,'');
@@ -42,6 +44,15 @@ export class ErrorExceptComponent  {
       "bin_id":''
     };
     http.post<JobBill>(`${environment.api}/GetAllBill`, body, options).subscribe(data_result=>{
+      for (let index = 0; index < data_result.bills.length; index++) {
+        const element = data_result.bills[index];
+        if(element.from_coord!==''){
+          element.from_coord=this.toolfunc.transferCoordinateSqlToUser(element.from_coord);
+        }
+        if(element.to_coord!==''){
+          element.to_coord=this.toolfunc.transferCoordinateSqlToUser(element.to_coord);
+        }
+      }
       this.data=data_result.bills;
       this.total_line_count=data_result.total_page_count;
     })

@@ -1,11 +1,11 @@
 <app-header></app-header>
 
 <div class="form-row d-flex">
-  <label class="col-md-1 pt-2 pr-2 text-right">job_id</label>
+  <label class="col-md-1 pt-2 pr-2 text-right scale-down-align-to-left">工作編號</label>
   <div class="form-group col-md-2">
     <input
       type="text"
-      placeholder="請輸入job_id"
+      placeholder="請輸入工作編號"
       #m_job_id
       [value]="search_job_id"
       (keyup)="search_job_id = m_job_id.value"
@@ -31,21 +31,21 @@
                   <table class="table table-striped">
                     <thead>
                       <tr>
-                        <th>job_id</th>
-                        <th>job_type</th>
-                        <th>bin_id</th>
-                        <th>class_id</th>
-                        <th>priority</th>
-                        <th>from_coord</th>
-                        <th>from_action</th>
-                        <th>to_coord</th>
-                        <th>to_action</th>
-                        <th>state</th>
-                        <th>user_id</th>
-                        <th>message</th>
-                        <th>update_date</th>
-                        <th>create_date</th>
-                        <th>execute</th>
+                        <th>工作編號</th>
+                        <th style="word-break: keep-all;">作業別</th>
+                        <th>箱號</th>
+                        <!-- <th>class_id</th> -->
+                        <!-- <th>priority</th> -->
+                        <th>起點</th>
+                        <!-- <th>from_action</th> -->
+                        <th>終點</th>
+                        <!-- <th>to_action</th> -->
+                        <th style="word-break: keep-all;">狀態</th>
+                        <th style="word-break: keep-all;">使用者</th>
+                        <th>訊息</th>
+                        <th>更新時間</th>
+                        <th>製單時間</th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -63,12 +63,12 @@
                         <td>{{ item.job_id }}</td>
                         <td>{{ item.job_type }}</td>
                         <td>{{ item.bin_id }}</td>
-                        <td>{{ item.class_id }}</td>
-                        <td>{{ item.priority }}</td>
+                        <!-- <td>{{ item.class_id }}</td> -->
+                        <!-- <td>{{ item.priority }}</td> -->
                         <td>{{ item.from_coord }}</td>
-                        <td>{{ item.from_action }}</td>
+                        <!-- <td>{{ item.from_action }}</td> -->
                         <td>{{ item.to_coord }}</td>
-                        <td>{{ item.to_action }}</td>
+                        <!-- <td>{{ item.to_action }}</td> -->
                         <td>{{ item.state }}</td>
                         <td>{{ item.user_id }}</td>
                         <td>{{ item.message }}</td>

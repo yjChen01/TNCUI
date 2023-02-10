@@ -3,7 +3,7 @@
 <div>
 
   <div class="form-row d-flex">
-    <label class="col-md-1 pt-2 pr-2 text-right">儲位編號</label>
+    <label class="col-md-1 pt-2 pr-2 text-right scale-down-align-to-left">儲位編號</label>
     <div class="form-group col-md-2">
       <input
         type="text"
@@ -13,7 +13,7 @@
         (keyup)="storage_serch_storage_id = v_storage_serch_storage_id.value"
       />
     </div>
-    <label class="col-md-1 pt-2 pr-2 text-right">箱號</label>
+    <label class="col-md-1 pt-2 pr-2 text-right scale-down-align-to-left">箱號</label>
     <div class="form-group col-md-2">
       <input
         type="text"
@@ -34,12 +34,12 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>storage_id</th>
-                    <th>priority</th>
-                    <th>state</th>
-                    <th>is_blocked</th>
-                    <th>is_maintained</th>
-                    <th>bin_id</th>
+                    <th>儲位編號</th>
+                    <!-- <th>priority</th> -->
+                    <th>狀態</th>
+                    <th>是否鎖定</th>
+                    <th>是否維修中</th>
+                    <th>箱號</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -47,7 +47,7 @@
                     *ngFor="let item of data"
                   >
                     <td>{{ item.storage_id }}</td>
-                    <td>{{ item.priority }}</td>
+                    <!-- <td>{{ item.priority }}</td> -->
                     <td>{{ item.state }}</td>
                     <td>{{ item.is_blocked }}</td>
                     <td>{{ item.is_maintained }}</td>
@@ -196,7 +196,7 @@
                           let i = index
                         "
                       >
-                        {{ i + 2 }}
+                        {{ i + 1 }}
                       </th>
                     </tr>
                   </thead>

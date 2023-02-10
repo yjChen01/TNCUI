@@ -1,3 +1,4 @@
+import { UniverseFunc } from './../universe-func';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { environment } from '@environment';
@@ -17,6 +18,8 @@ export class BillQueryComponent  {
   search_job_id:string='';
   search_bin_id:string='';
   total_line_count:number;
+
+  functool :UniverseFunc=new UniverseFunc();
 
   constructor(private http:HttpClient) {
     this.GetErrorBill(http,'','');
@@ -38,6 +41,17 @@ export class BillQueryComponent  {
       "bin_id":v_bin_id
     };
     http.post<JobBill>(`${environment.api}/GetAllBill`, body, options).subscribe(data_result=>{
+      for (let index = 0; index < data_result.bills.length; index++) {
+        const element = data_result.bills[index];
+        // console.log(element.to_coord);
+        if(element.from_coord!==''){
+          element.from_coord=this.functool.transferCoordinateSqlToUser(element.from_coord);
+        }
+        if(element.to_coord!==''){
+          element.to_coord=this.functool.transferCoordinateSqlToUser(element.to_coord);
+        }
+        // console.log(element.to_coord);
+      }
       this.data=data_result.bills;
       this.total_line_count=data_result.total_page_count;
     })

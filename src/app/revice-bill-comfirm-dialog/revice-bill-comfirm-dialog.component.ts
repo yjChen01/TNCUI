@@ -1,3 +1,4 @@
+import { UniverseFunc } from './../universe-func';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -18,17 +19,18 @@ export class ReviceBillComfirmDialogComponent {
   get Bin_id() {
     return this.data.bin_id;
   }
-
+  toolfunc :UniverseFunc=new UniverseFunc();
   constructor(@Inject(MAT_DIALOG_DATA) private data: any,private http: HttpClient,public dialog:MatDialog) {}
 
   confirm_manual_job() {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
+    let real_from_coord:string=this.toolfunc.transferCoordinateUserToSql(this.fix_from_coord);
 
     let v_task_param = {
       job_id: this.Job_id,
-      from_coord:this.fix_from_coord
+      from_coord:real_from_coord
     };
 
     let body = {

@@ -8,7 +8,7 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
   styleUrls: ['./revice-bill-dialog.component.css'],
 })
 export class ReviceBillDialogComponent {
-  column_dropdown_list = [84];
+  column_dropdown_list = [83];
   get Job_id() {
     return this.data.job_id;
   }
@@ -24,9 +24,9 @@ export class ReviceBillDialogComponent {
     this.dialog.open(ReviceBillComfirmDialogComponent,{
       data:{
         job_id:this.Job_id,
-        row:v_row,
+        row:+v_row+1,
         column:v_column,
-        layer:v_layer,
+        layer:+v_layer+1,
         bin_id:this.Bin_id
       }
     });

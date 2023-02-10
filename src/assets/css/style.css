@@ -217,6 +217,12 @@ ul.tree, ul.tree_sub {
     }
 }
 
+  @media (max-width: 991.98px) {
+    .scale-down-align-to-left{
+          text-align: left !important;
+    }
+  }
+
 .site-navbar .site-navigation.border-bottom {
     border-bottom: 1px solid white !important;
 }

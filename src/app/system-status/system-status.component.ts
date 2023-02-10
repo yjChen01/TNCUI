@@ -1,3 +1,4 @@
+import { UniverseFunc } from './../universe-func';
 import { StationStatusDialogComponent } from './../station-status-dialog/station-status-dialog.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
@@ -36,6 +37,8 @@ export class SystemStatusComponent {
   shuttle_count:number=0;
   lift_count:number=0;
 
+  functool :UniverseFunc=new UniverseFunc();
+
   constructor(private http: HttpClient,public dialog:MatDialog) {
     http
       .post<EQStatus>(`${environment.geneapi}/get_status`, '')
@@ -48,6 +51,9 @@ export class SystemStatusComponent {
         let v_lift_system_arr: boolean[] = [];
         for (const [key, value] of Object.entries(this.shuttle_system)) {
           // console.log(`${key}: ${value}`);
+          // console.log(value.coord);
+          value.coord=this.functool.transferCoordinateSqlToUser_systemstate(value.coord);
+          // console.log(value.coord);
           v_shuttle_system_arr.push(value);
           this.shuttle_name_arr.push(key);
           this.shuttle_count++;
@@ -74,6 +80,7 @@ export class SystemStatusComponent {
       let v_lift_system_arr: boolean[] = [];
       for (const [key, value] of Object.entries(this.shuttle_system)) {
         // console.log(`${key}: ${value}`);
+        value.coord=this.functool.transferCoordinateSqlToUser_systemstate(value.coord);
         v_shuttle_system_arr.push(value);
         this.shuttle_name_arr.push(key);
         // this.shuttle_count++;
@@ -98,6 +105,7 @@ export class SystemStatusComponent {
     let v_lift_system_arr: boolean[] = [];
     for (const [key, value] of Object.entries(this.shuttle_system)) {
       // console.log(`${key}: ${value}`);
+      value.coord=this.functool.transferCoordinateSqlToUser_systemstate(value.coord);
       v_shuttle_system_arr.push(value);
     }
     for(const[key,value] of Object.entries(this.lift_system)){
