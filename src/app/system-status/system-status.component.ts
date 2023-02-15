@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 import { EQStatus, TaskExecutor } from '../eqstatus';
 import { MatDialog } from '@angular/material/dialog';
 import { environment } from '@environment';
+import { Bill } from '../job-bill';
 
 @Component({
   selector: 'app-system-status',
@@ -284,5 +285,33 @@ export class SystemStatusComponent {
   }
   aaa(a:number){
     console.log(a);
+  }
+
+  getJobDetail(v_job_id:string){
+    let body = {
+      job_id:v_job_id
+    };
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    let options = {
+      headers,
+    };
+    this.http
+      .post<Bill>(`${environment.api}/GetJobDetail`,body,options)
+      .subscribe({
+        next: (data_result) => {
+          this.dialog.open(StationStatusDialogComponent,{
+            data:{
+              job_id:v_job_id,
+              bin_id:data_result.bin_id,
+              job_type:data_result.job_type
+            }
+          });
+        },
+        error:(err)=>{
+          alert('api連線錯誤: \n'+err.message);
+        }
+      });
   }
 }
