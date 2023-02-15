@@ -1,3 +1,4 @@
+import { JobDetailDialogComponent } from './../job-detail-dialog/job-detail-dialog.component';
 import { UniverseFunc } from './../universe-func';
 import { StationStatusDialogComponent } from './../station-status-dialog/station-status-dialog.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -301,7 +302,7 @@ export class SystemStatusComponent {
       .post<Bill>(`${environment.api}/GetJobDetail`,body,options)
       .subscribe({
         next: (data_result) => {
-          this.dialog.open(StationStatusDialogComponent,{
+          this.dialog.open(JobDetailDialogComponent,{
             data:{
               job_id:v_job_id,
               bin_id:data_result.bin_id,
