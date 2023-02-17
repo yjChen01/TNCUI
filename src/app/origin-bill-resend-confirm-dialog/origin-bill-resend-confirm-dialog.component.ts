@@ -1,7 +1,9 @@
+import { UniverseFunc } from './../universe-func';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { environment } from '@environment';
+import { error_type } from '../eq-error-enum';
 
 @Component({
   selector: 'app-origin-bill-resend-confirm-dialog',
@@ -23,6 +25,7 @@ export class OriginBillResendConfirmDialogComponent {
   }
   constructor(@Inject(MAT_DIALOG_DATA) private data: any,private http: HttpClient,public dialog:MatDialog) {}
 
+  toolfunc :UniverseFunc=new UniverseFunc();
   confirm_manual_job() {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -48,7 +51,7 @@ export class OriginBillResendConfirmDialogComponent {
         next: (data_result) => {
           console.log(data_result);
           if(data_result.is_success==false){
-            alert(data_result.message);
+            alert(this.toolfunc.error_msg_trans(data_result.message,error_type['resend_and_fin_job_error']));
           }
           this.dialog.closeAll();
           location.reload();

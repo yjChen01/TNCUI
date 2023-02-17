@@ -7,6 +7,7 @@ import { EQStatus, TaskExecutor } from '../eqstatus';
 import { MatDialog } from '@angular/material/dialog';
 import { environment } from '@environment';
 import { Bill } from '../job-bill';
+import { error_type } from '../eq-error-enum';
 
 @Component({
   selector: 'app-system-status',
@@ -145,7 +146,7 @@ export class SystemStatusComponent {
     else return 'ia-idle-shuttle';
   }
 
-  send_task_api(body:any){
+  send_task_api(body:any,command_type:number){
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -158,7 +159,7 @@ export class SystemStatusComponent {
       .subscribe({
         next: (data_result) => {
           if(data_result.is_success==false){
-            alert(data_result.message);
+            alert(this.functool.error_msg_trans(data_result.message,command_type));
           }
         },
         error:(err)=>{
@@ -193,7 +194,7 @@ export class SystemStatusComponent {
         task_name:'start',
         task_param:''
       };
-      this.send_task_api(body);
+      this.send_task_api(body,error_type['start_error']);
       console.log('開始系統');
     }
     else if(this.system_state==2){
@@ -202,7 +203,7 @@ export class SystemStatusComponent {
         task_name:'stop',
         task_param:''
       };
-      this.send_task_api(body);
+      this.send_task_api(body,error_type['stop_error']);
       console.log('停止系統');
     }
     else{
@@ -214,11 +215,14 @@ export class SystemStatusComponent {
   lift_action(task_type:number,lift_name:string){
     // console.log(task_type);
     let v_task_name:string;
+    let command_type:string;
     if(task_type==1){
-      v_task_name='remove_blocked_lifter'
+      v_task_name='remove_blocked_lifter';
+      command_type='unblock_lifter_error';
     }
     else{
-      v_task_name='add_blocked_lifter'
+      v_task_name='add_blocked_lifter';
+      command_type='block_lifter_error';
     }
 
     let v_task_param={
@@ -230,7 +234,7 @@ export class SystemStatusComponent {
       task_param:v_task_param
     };
     console.log(body);
-    this.send_task_api(body);
+    this.send_task_api(body,error_type[command_type]);
     this.refresh_EQ_data(this.http);
   }
 
@@ -245,7 +249,7 @@ export class SystemStatusComponent {
         task_param:v_task_param
       };
       console.log(body);
-      this.send_task_api(body);
+      this.send_task_api(body,error_type['switch_to_auto_error']);
     }
     else if(task_type==2){//手動
       this.showStatinoStatusDialog(shuttle_name);
@@ -260,7 +264,7 @@ export class SystemStatusComponent {
         task_param:v_task_param
       };
       console.log(body);
-      this.send_task_api(body);
+      this.send_task_api(body,error_type['move_to_charge_stn_error']);
     }
     else{//至別層
       let v_task_param={
@@ -272,7 +276,7 @@ export class SystemStatusComponent {
         task_param:v_task_param
       };
       console.log(body);
-      this.send_task_api(body);
+      this.send_task_api(body,error_type['move_to_other_layer_error']);
     }
     this.refresh_EQ_data(this.http);
   }

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { environment } from '@environment';
+import { error_type } from '../eq-error-enum';
 
 @Component({
   selector: 'app-revice-bill-comfirm-dialog',
@@ -50,7 +51,7 @@ export class ReviceBillComfirmDialogComponent {
         next: (data_result) => {
           console.log(data_result);
           if(data_result.is_success==false){
-            alert(data_result.message);
+            alert(this.toolfunc.error_msg_trans(data_result.message,error_type['correct_job_error']));
           }
           this.dialog.closeAll();
           location.reload();
