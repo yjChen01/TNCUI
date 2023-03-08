@@ -32,6 +32,7 @@ import { OriginBillResendConfirmDialogComponent } from './origin-bill-resend-con
 import { FinishBillDialogComponent } from './finish-bill-dialog/finish-bill-dialog.component';
 import { RebootConfirmDialogComponent } from './reboot-confirm-dialog/reboot-confirm-dialog.component';
 import { JobDetailDialogComponent } from './job-detail-dialog/job-detail-dialog.component';
+import { SystemActionComfirmActionDialogComponent } from './system-action-comfirm-action-dialog/system-action-comfirm-action-dialog.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { JobDetailDialogComponent } from './job-detail-dialog/job-detail-dialog.
     FinishBillDialogComponent,
     RebootConfirmDialogComponent,
     JobDetailDialogComponent,
+    SystemActionComfirmActionDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +77,6 @@ import { JobDetailDialogComponent } from './job-detail-dialog/job-detail-dialog.
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [StationStatusDialogComponent,ReviceBillDialogComponent,OriginBillResendConfirmDialogComponent,FinishBillDialogComponent,RebootConfirmDialogComponent,JobDetailDialogComponent],
+  entryComponents: [StationStatusDialogComponent,ReviceBillDialogComponent,OriginBillResendConfirmDialogComponent,FinishBillDialogComponent,RebootConfirmDialogComponent,JobDetailDialogComponent,SystemActionComfirmActionDialogComponent],
 })
 export class AppModule {}

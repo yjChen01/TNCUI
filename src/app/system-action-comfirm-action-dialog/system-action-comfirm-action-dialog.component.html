@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>確認{{action_name}}</h2>
+
+<mat-dialog-content class="post-form">
+  <div style="font-weight: bolder; text-align: center">確認切換系統狀態為{{action_name}}</div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button
+    type="button"
+    class="btn btn-ia-blue mr-2"
+    mat-button
+    (click)="sandaction()"
+  >
+    確認
+  </button>
+  <button mat-button mat-dialog-close type="button" class="btn btn-ia-red">
+    返回
+  </button>
+</mat-dialog-actions>

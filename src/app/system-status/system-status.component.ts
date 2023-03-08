@@ -1,3 +1,5 @@
+import { SystemActionComfirmActionDialogComponent } from './../system-action-comfirm-action-dialog/system-action-comfirm-action-dialog.component';
+import { StorageList } from './../job-bill';
 import { JobDetailDialogComponent } from './../job-detail-dialog/job-detail-dialog.component';
 import { UniverseFunc } from './../universe-func';
 import { StationStatusDialogComponent } from './../station-status-dialog/station-status-dialog.component';
@@ -188,23 +190,9 @@ export class SystemStatusComponent {
   }
 
   system_action(){
-    if(this.system_state==0){
+    if(this.system_state!=1){
       // this.system_state=2;
-      let body = {
-        task_name:'start',
-        task_param:''
-      };
-      this.send_task_api(body,error_type['start_error']);
-      console.log('開始系統');
-    }
-    else if(this.system_state==2){
-      // this.system_state=0;
-      let body = {
-        task_name:'stop',
-        task_param:''
-      };
-      this.send_task_api(body,error_type['stop_error']);
-      console.log('停止系統');
+      this.showComfirmSystemActionDialog(this.system_state);
     }
     else{
       console.log('系統停止中，無法切換');
@@ -318,5 +306,13 @@ export class SystemStatusComponent {
           alert('api連線錯誤: \n'+err.message);
         }
       });
+  }
+
+  showComfirmSystemActionDialog(action_type:number){
+    this.dialog.open(SystemActionComfirmActionDialogComponent,{
+      data:{
+        CommandName:action_type
+      }
+    });
   }
 }
