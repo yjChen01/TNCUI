@@ -118,10 +118,10 @@ export class UniverseFunc{
         return transfer_rsl ;
 
         case error_type['switch_to_manual_error']:
-          if(errcode<2){
+          if(errcode<3){
             transfer_rsl=switch_to_manual_error[errcode];
           }
-          else if(errcode==2){
+          else if(errcode==3){
             transfer_rsl=`${switch_to_manual_error[errcode]};${errormsg}`;
           }
           else{

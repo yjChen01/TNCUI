@@ -39,7 +39,8 @@ export enum switch_to_auto_error{
 export enum switch_to_manual_error{
   '請先停止系統'=0,
   '有執行中任務'=1,
-  '服務異常，請洽資訊人員'=2//
+  '非法的維修區，請檢查其他梭車的位置是否重覆'=2,
+  '服務異常，請洽資訊人員'=3//
 }
 
 export enum move_to_other_layer_error{
