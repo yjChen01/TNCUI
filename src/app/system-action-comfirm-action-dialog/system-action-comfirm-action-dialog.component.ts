@@ -20,10 +20,10 @@ export class SystemActionComfirmActionDialogComponent {
 
   get action_name(){
     if(this.data.CommandName==0){
-      return '停止';
+      return '開始';
     }
     else{
-      return '開始';
+      return '停止';
     }
   }
   constructor(
@@ -33,7 +33,7 @@ export class SystemActionComfirmActionDialogComponent {
   ) {}
 
   sandaction(){
-    if(this.CommandName==0){
+    if(this.CommandName==2){
       // this.system_state=0;
       let body = {
         task_name:'stop',
@@ -42,7 +42,7 @@ export class SystemActionComfirmActionDialogComponent {
       this.send_task_api(body,error_type['stop_error']);
       console.log('停止系統');
     }
-    else if(this.CommandName==2){
+    else if(this.CommandName==0){
       let body = {
         task_name:'start',
         task_param:''
