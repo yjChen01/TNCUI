@@ -25,7 +25,7 @@ export class ReviceBillDialogComponent {
     this.dialog.open(ReviceBillComfirmDialogComponent,{
       data:{
         job_id:this.Job_id,
-        row:+v_row+1,
+        row:v_row,
         column:v_column,
         layer:+v_layer+1,
         bin_id:this.Bin_id
