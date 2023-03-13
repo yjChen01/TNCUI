@@ -8,7 +8,8 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
   styleUrls: ['./revice-bill-dialog.component.css'],
 })
 export class ReviceBillDialogComponent {
-  column_dropdown_list = [83];
+  column_dropdown_list = [2,83];
+  row_dropdown_list=[1,3,5];
   get Job_id() {
     return this.data.job_id;
   }
@@ -30,5 +31,15 @@ export class ReviceBillDialogComponent {
         bin_id:this.Bin_id
       }
     });
+  }
+
+
+  col_change(col_val:number){
+    if(col_val==83){
+      this.row_dropdown_list=[1,2,3,4,5];
+    }
+    else{
+      this.row_dropdown_list=[1,3,5];
+    }
   }
 }
