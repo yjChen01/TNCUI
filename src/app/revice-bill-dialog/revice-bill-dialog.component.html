@@ -8,8 +8,8 @@
     <label class="col-md-6 pt-2 pr-2">row:</label>
     <div class="form-group col-md-6">
       <select class="form-control" #row>
-        <option *ngFor="let _ of [].constructor(5); let i = index" [value]="i">
-          {{ i+1 }}
+        <option *ngFor="let row_opt of row_dropdown_list;" [value]="row_opt">
+          {{ row_opt }}
         </option>
       </select>
     </div>
@@ -17,7 +17,7 @@
   <div class="form-row d-flex">
     <label class="col-md-6 pt-2 pr-2">column:</label>
     <div class="form-group col-md-6">
-      <select class="form-control" #column>
+      <select class="form-control" #column (change)="col_change($event.target.value)">
         <option *ngFor="let opt of column_dropdown_list;" [value]="opt">
           {{ opt }}
         </option>
