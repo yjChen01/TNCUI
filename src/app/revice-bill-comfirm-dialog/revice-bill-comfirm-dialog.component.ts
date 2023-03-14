@@ -15,7 +15,7 @@ export class ReviceBillComfirmDialogComponent {
     return this.data.job_id;
   }
   get fix_from_coord() {
-    return `${this.data.row},${this.data.column},${this.data.layer},1`
+    return `${this.data.row},${this.data.column},${this.data.layer},0`
   }
   get Bin_id() {
     return this.data.bin_id;
