@@ -1,7 +1,9 @@
 <app-header></app-header>
 
 <div class="form-row d-flex">
-  <label class="col-md-1 pt-2 pr-2 text-right scale-down-align-to-left">工作編號</label>
+  <label class="col-md-1 pt-2 pr-2 text-right scale-down-align-to-left"
+    >工作編號</label
+  >
   <div class="form-group col-md-2">
     <input
       type="text"
@@ -11,7 +13,9 @@
       (keyup)="search_job_id = m_job_id.value"
     />
   </div>
-  <label class="col-md-1 pt-2 pr-2 text-right scale-down-align-to-left">箱號</label>
+  <label class="col-md-1 pt-2 pr-2 text-right scale-down-align-to-left"
+    >箱號</label
+  >
   <div class="form-group col-md-2">
     <input
       type="text"
@@ -22,10 +26,17 @@
     />
   </div>
   <div class="col-md-3">
-    <button class="btn btn-ia-blue" (click)="SearchByJobid(m_job_id.value, m_bin_id.value)">搜尋</button>
+    <button
+      class="btn btn-ia-blue"
+      (click)="SearchByJobid(m_job_id.value, m_bin_id.value)"
+    >
+      搜尋
+    </button>
   </div>
   <div class="ml-auto">
-    <pagination-controls (pageChange)="SearchByPageNo($event)"></pagination-controls>
+    <pagination-controls
+      (pageChange)="SearchByPageNo($event)"
+    ></pagination-controls>
   </div>
 </div>
 
@@ -42,16 +53,16 @@
                     <thead>
                       <tr>
                         <th>工作編號</th>
-                        <th style="word-break: keep-all;">作業別</th>
+                        <th style="word-break: keep-all">站別</th>
+                        <th style="word-break: keep-all">作業別</th>
                         <th>箱號</th>
-                        <!-- <th>class_id</th> -->
                         <!-- <th>priority</th> -->
                         <th>起點</th>
                         <!-- <th>from_action</th> -->
                         <th>終點</th>
                         <!-- <th>to_action</th> -->
-                        <th style="word-break: keep-all;">狀態</th>
-                        <th style="word-break: keep-all;">使用者</th>
+                        <th style="word-break: keep-all">狀態</th>
+                        <th style="word-break: keep-all">使用者</th>
                         <th>訊息</th>
                         <th>更新時間</th>
                         <th>製單時間</th>
@@ -70,9 +81,9 @@
                         "
                       >
                         <td>{{ item.job_id }}</td>
+                        <td>{{ ClassIdTransfer(item.class_id) }}</td>
                         <td>{{ item.job_type }}</td>
                         <td>{{ item.bin_id }}</td>
-                        <!-- <td>{{ item.class_id }}</td> -->
                         <!-- <td>{{ item.priority }}</td> -->
                         <td>{{ item.from_coord }}</td>
                         <!-- <td>{{ item.from_action }}</td> -->
@@ -95,6 +106,8 @@
     </div>
   </div>
 </div>
-<div class="d-flex  justify-content-around">
-  <pagination-controls (pageChange)="SearchByPageNo($event)"></pagination-controls>
+<div class="d-flex justify-content-around">
+  <pagination-controls
+    (pageChange)="SearchByPageNo($event)"
+  ></pagination-controls>
 </div>

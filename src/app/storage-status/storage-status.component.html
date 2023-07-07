@@ -1,10 +1,9 @@
 <app-header></app-header>
 
 <div>
-
-  <div class="form-row d-flex">
-    <label class="col-md-1 pt-2 pr-2 text-right scale-down-align-to-left">儲位編號</label>
-    <div class="form-group col-md-2">
+  <div class="d-flex mb-3" style="margin-left: 18px">
+    <label class="pt-2 pr-2">儲位編號</label>
+    <div style="margin-top: 4px">
       <input
         type="text"
         placeholder="請輸入儲位編號(完整)"
@@ -13,8 +12,8 @@
         (keyup)="storage_serch_storage_id = v_storage_serch_storage_id.value"
       />
     </div>
-    <label class="col-md-1 pt-2 pr-2 text-right scale-down-align-to-left">箱號</label>
-    <div class="form-group col-md-2">
+    <label class="pt-2 pr-2" style="margin-left: 25px">箱號</label>
+    <div style="margin-top: 4px">
       <input
         type="text"
         placeholder="請輸入箱號(完整)"
@@ -23,141 +22,192 @@
         (keyup)="storage_serch_bin_id = v_storage_serch_bin_id.value"
       />
     </div>
-    <div class="col-md-3">
-      <button class="btn btn-ia-blue" (click)="SearchStorageData(v_storage_serch_storage_id.value, v_storage_serch_bin_id.value)">搜尋</button>
-    </div>
-    <div class="card-body">
-      <div class="mt-4 mb-4">
-        <div>
-          <div class="table-responsive">
-            <div class="">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>儲位編號</th>
-                    <!-- <th>priority</th> -->
-                    <th>狀態</th>
-                    <th>是否鎖定</th>
-                    <th>是否維修中</th>
-                    <th>箱號</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    *ngFor="let item of data"
-                  >
-                    <td>{{ item.storage_id }}</td>
-                    <!-- <td>{{ item.priority }}</td> -->
-                    <td>{{ item.state }}</td>
-                    <td>{{ item.is_blocked }}</td>
-                    <td>{{ item.is_maintained }}</td>
-                    <td>{{ item.bin_id }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-</div>
-<hr style="border: 1.5px solid rgb(156, 156, 156);"/>
-<div>
-  <div class="form-row">
-    <label class="col-md-1 pt-2 pr-2 text-right">樓層</label>
-    <div class="form-group col-md-2">
-      <select class="form-control" #CurrentSelectLayer>
-        <option *ngFor="let opt of layer_list_ddl" [value]="opt.key">
-          {{ opt.key }}
-        </option>
-      </select>
-    </div>
-    <div class="col-md-3">
+    <div>
       <button
         class="btn btn-ia-blue"
-        (click)="clickLayerDDL(CurrentSelectLayer.value)"
+        (click)="
+          SearchStorageData(
+            v_storage_serch_storage_id.value,
+            v_storage_serch_bin_id.value
+          )
+        "
+        style="margin-left: 25px"
       >
         搜尋
       </button>
     </div>
+    <div class="ml-auto">
+      <div class="d-flex flex-column">
+        <div>
+          <label class="pt-2 pr-2" style="margin-left: 25px">禁用儲位</label>
+          <input
+            type="text"
+            placeholder="輸入格式:列,格,層,側"
+            #disable_storage_id
+          />
+          <button
+            class="btn btn-danger"
+            (click)="
+            ChangeStoreStatus(
+              disable_storage_id.value,
+              1
+              )
+            "
+            style="margin-left: 5px"
+          >
+            禁用
+          </button>
+        </div>
+        <div style="margin-top: 5px;">
+          <label class="pt-2 pr-2" style="margin-left: 25px">啟用儲位</label>
+          <input
+            type="text"
+            placeholder="輸入格式:列,格,層,側"
+            #enable_storage_id
+          />
+          <button
+            class="btn btn-success"
+            (click)="
+            ChangeStoreStatus(
+              enable_storage_id.value,
+              0
+              )
+            "
+            style="margin-left: 5px"
+          >
+            啟用
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="px-3 pt-2">
-    <div class="p-2">
-      <div class="d-inline-flex">
-        <span
-          data-toggle="tooltip"
-          data-placement="bottom"
-          class="icon-square icon-empty-storage"
-        ></span>
-        <div class="p-1"><label>空儲位</label></div>
-        <!-- <div class="p-1 px-2"><span>112</span></div> -->
-      </div>
-      <div class="d-inline-flex">
-        <span
-          data-toggle="tooltip"
-          data-placement="bottom"
-          class="icon-square icon-full-storage"
-        ></span>
-        <div class="p-1"><label>實儲位</label></div>
-        <!-- <div class="p-1 px-2"><span>222</span></div> -->
-      </div>
-
-      <div class="d-inline-flex">
-        <span
-          data-toggle="tooltip"
-          data-placement="bottom"
-          class="icon-square icon-OB-storage"
-        ></span>
-        <div class="p-1">出庫中</div>
-        <!-- <div class="p-1 px-2"><span>1</span></div> -->
-      </div>
-
-      <div class="d-inline-flex">
-        <span
-          data-toggle="tooltip"
-          data-placement="bottom"
-          class="icon-square icon-IB-storage"
-        ></span>
-        <div class="p-1">入庫中</div>
-        <!-- <div class="p-1 px-2"><span>1</span></div> -->
-      </div>
-
-      <div class="d-inline-flex">
-        <span
-          data-toggle="tooltip"
-          data-placement="bottom"
-          class="icon-square icon-maintain-storage"
-        ></span>
-        <div class="p-1">
-          <label>維修庫位</label>
+  <div class="card-body">
+    <div class="mt-4 mb-4">
+      <div>
+        <div class="table-responsive">
+          <div class="">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>儲位編號</th>
+                  <!-- <th>priority</th> -->
+                  <th>狀態</th>
+                  <th>是否鎖定</th>
+                  <th>是否維修中</th>
+                  <th>箱號</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of data">
+                  <td>{{ item.storage_id }}</td>
+                  <!-- <td>{{ item.priority }}</td> -->
+                  <td>{{ item.state }}</td>
+                  <td>{{ item.is_blocked }}</td>
+                  <td>{{ item.is_maintained }}</td>
+                  <td>{{ item.bin_id }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <!-- <div class="p-1 px-2"><span>0</span></div> -->
       </div>
-
-      <div class="d-inline-flex">
-        <span
-          data-toggle="tooltip"
-          data-placement="bottom"
-          class="icon-square icon-forbidden-storage"
-        ></span>
-        <div class="p-1" style="margin-right: 20px">
-          <label>禁用庫位</label>
+    </div>
+  </div>
+  <hr style="border: 1.5px solid rgb(156, 156, 156)" />
+  <div>
+    <div class="form-row">
+      <label class="col-md-1 pt-2 pr-2 text-right">樓層</label>
+      <div class="form-group col-md-2">
+        <select class="form-control" #CurrentSelectLayer>
+          <option *ngFor="let opt of layer_list_ddl" [value]="opt.key">
+            {{ opt.key }}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <button
+          class="btn btn-ia-blue"
+          (click)="clickLayerDDL(CurrentSelectLayer.value)"
+        >
+          搜尋
+        </button>
+      </div>
+    </div>
+    <div class="px-3 pt-2">
+      <div class="p-2">
+        <div class="d-inline-flex">
+          <span
+            data-toggle="tooltip"
+            data-placement="bottom"
+            class="icon-square icon-empty-storage"
+          ></span>
+          <div class="p-1"><label>空儲位</label></div>
+          <!-- <div class="p-1 px-2"><span>112</span></div> -->
         </div>
-        <!-- <div class="p-1 px-2"><span>0</span></div> -->
-      </div>
+        <div class="d-inline-flex">
+          <span
+            data-toggle="tooltip"
+            data-placement="bottom"
+            class="icon-square icon-full-storage"
+          ></span>
+          <div class="p-1"><label>實儲位</label></div>
+          <!-- <div class="p-1 px-2"><span>222</span></div> -->
+        </div>
 
-      <div class="d-inline-flex">
-        <span
-          data-toggle="tooltip"
-          data-placement="bottom"
-          class="icon-circle icon-normal-shuttle"
-        ></span>
-        <div class="p-1"><label>穿梭車</label></div>
-      </div>
+        <div class="d-inline-flex">
+          <span
+            data-toggle="tooltip"
+            data-placement="bottom"
+            class="icon-square icon-OB-storage"
+          ></span>
+          <div class="p-1">出庫中</div>
+          <!-- <div class="p-1 px-2"><span>1</span></div> -->
+        </div>
 
-      <!-- <div class="d-inline-flex">
+        <div class="d-inline-flex">
+          <span
+            data-toggle="tooltip"
+            data-placement="bottom"
+            class="icon-square icon-IB-storage"
+          ></span>
+          <div class="p-1">入庫中</div>
+          <!-- <div class="p-1 px-2"><span>1</span></div> -->
+        </div>
+
+        <div class="d-inline-flex">
+          <span
+            data-toggle="tooltip"
+            data-placement="bottom"
+            class="icon-square icon-maintain-storage"
+          ></span>
+          <div class="p-1">
+            <label>維修庫位</label>
+          </div>
+          <!-- <div class="p-1 px-2"><span>0</span></div> -->
+        </div>
+
+        <div class="d-inline-flex">
+          <span
+            data-toggle="tooltip"
+            data-placement="bottom"
+            class="icon-square icon-forbidden-storage"
+          ></span>
+          <div class="p-1" style="margin-right: 20px">
+            <label>禁用庫位</label>
+          </div>
+          <!-- <div class="p-1 px-2"><span>0</span></div> -->
+        </div>
+
+        <div class="d-inline-flex">
+          <span
+            data-toggle="tooltip"
+            data-placement="bottom"
+            class="icon-circle icon-normal-shuttle"
+          ></span>
+          <div class="p-1"><label>穿梭車</label></div>
+        </div>
+
+        <!-- <div class="d-inline-flex">
         <span
           data-toggle="tooltip"
           data-placement="bottom"
@@ -165,250 +215,257 @@
         ></span>
         <div class="p-1"><label>異常穿梭車</label></div>
       </div> -->
+      </div>
     </div>
   </div>
-</div>
-<div class="container-fluid mt-3">
-  <div class="form-row">
-    <div class="col-md-12 col-lg-12 pb-2 ia-rightcardheight ia-scrollerbar">
-      <div class="card" style="overflow: auto; min-height: 100%">
-        <div class="card-body">
-          <div class="mt-4 mb-4">
-            <div>
-              <div class="table-responsive">
-                <table
-                  class="table-border ia-storageTable"
-                  style="table-layout: fixed"
-                >
-                  <thead>
-                    <tr>
-                      <th
-                        style="
-                          border-left: 2px solid transparent;
-                          border-top: 2px solid transparent;
-                          border-right: 2px solid transparent;
-                        "
-                      ></th>
-                      <th style="border-top: 2px solid transparent"></th>
-                      <th
-                        *ngFor="
-                          let _ of [].constructor(column_count);
-                          let i = index
-                        "
-                      >
-                        {{ i + 1 }}
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td rowspan="3">
-                        <i
-                          *ngIf="shuttle_col[4] === 0"
-                          [ngClass]="getErrorLightClass(shuttle_col_state[4])"
-                          class="icon-circle ia-shuttle-icon"
-                        ></i>
-                      </td>
-                      <td></td>
-                      <td
-                        *ngFor="
-                          let _ of [].constructor(column_count);
-                          let i = index
-                        "
-                        [ngClass]="getStorageClass(storage_data?.[9]?.[i])"
-                      ></td>
-                    </tr>
-                    <tr>
-                      <td
-                        *ngFor="
-                          let _ of [].constructor(column_count + 1);
-                          let i = index
-                        "
-                      >
-                        <i
-                          *ngIf="i + 1 === shuttle_col[4]"
-                          [ngClass]="getErrorLightClass(shuttle_col_state[4])"
-                          class="icon-circle ia-shuttle-icon"
-                        ></i>
-                      </td>
-                    </tr>
-                    <tr class="ia-storage-divider">
-                      <td></td>
-                      <td
-                        *ngFor="
-                          let _ of [].constructor(column_count);
-                          let i = index
-                        "
-                        [ngClass]="getStorageClass(storage_data?.[8]?.[i])"
-                      ></td>
-                    </tr>
-                    <tr>
-                      <td rowspan="3" class="ia-storage-left-transparent"></td>
-                      <td></td>
-                      <td
-                        *ngFor="
-                          let _ of [].constructor(column_count);
-                          let i = index
-                        "
-                        [ngClass]="getStorageClass(storage_data?.[7]?.[i])"
-                      ></td>
-                    </tr>
-                    <tr>
-                      <td
-                        *ngFor="
-                          let _ of [].constructor(column_count + 1);
-                          let i = index
-                        "
-                      >
-                        <i
-                          *ngIf="i + 1 === shuttle_col[3]"
-                          [ngClass]="getErrorLightClass(shuttle_col_state[3])"
-                          class="icon-circle ia-shuttle-icon"
-                        ></i>
-                      </td>
-                    </tr>
-                    <tr class="ia-storage-divider">
-                      <td></td>
-                      <td
-                        *ngFor="
-                          let _ of [].constructor(column_count);
-                          let i = index
-                        "
-                        [ngClass]="getStorageClass(storage_data?.[6]?.[i])"
-                      ></td>
-                    </tr>
-                    <tr>
-                      <td rowspan="3">
-                        <i
-                          *ngIf="shuttle_col[2] === 0"
-                          [ngClass]="getErrorLightClass(shuttle_col_state[2])"
-                          class="icon-circle ia-shuttle-icon"
-                        ></i>
-                      </td>
-                      <td></td>
-                      <td
-                        *ngFor="
-                          let _ of [].constructor(column_count);
-                          let i = index
-                        "
-                        [ngClass]="getStorageClass(storage_data?.[5]?.[i])"
-                      ></td>
-                    </tr>
-                    <tr>
-                      <td
-                        *ngFor="
-                          let _ of [].constructor(column_count + 1);
-                          let i = index
-                        "
-                      >
-                        <i
-                          *ngIf="i + 1 === shuttle_col[2]"
-                          [ngClass]="getErrorLightClass(shuttle_col_state[2])"
-                          class="icon-circle ia-shuttle-icon"
-                        ></i>
-                      </td>
-                    </tr>
-                    <tr class="ia-storage-divider">
-                      <td></td>
-                      <td
-                        *ngFor="
-                          let _ of [].constructor(column_count);
-                          let i = index
-                        "
-                        [ngClass]="getStorageClass(storage_data?.[4]?.[i])"
-                      ></td>
-                    </tr>
-                    <tr>
-                      <td rowspan="3" class="ia-storage-left-transparent"></td>
-                      <td></td>
-                      <td
-                        *ngFor="
-                          let _ of [].constructor(column_count);
-                          let i = index
-                        "
-                        [ngClass]="getStorageClass(storage_data?.[3]?.[i])"
-                      ></td>
-                    </tr>
-                    <tr>
-                      <td
-                        *ngFor="
-                          let _ of [].constructor(column_count + 1);
-                          let i = index
-                        "
-                      >
-                        <i
-                          *ngIf="i + 1 === shuttle_col[1]"
-                          [ngClass]="getErrorLightClass(shuttle_col_state[1])"
-                          class="icon-circle ia-shuttle-icon"
-                        ></i>
-                      </td>
-                    </tr>
-                    <tr class="ia-storage-divider">
-                      <td></td>
-                      <td
-                        *ngFor="
-                          let _ of [].constructor(column_count);
-                          let i = index
-                        "
-                        [ngClass]="getStorageClass(storage_data?.[2]?.[i])"
-                      ></td>
-                    </tr>
-                    <tr>
-                      <td rowspan="3">
-                        <i
-                          *ngIf="shuttle_col[0] === 0"
-                          [ngClass]="getErrorLightClass(shuttle_col_state[0])"
-                          class="icon-circle ia-shuttle-icon"
-                        ></i>
-                      </td>
-                      <td></td>
-                      <td
-                        *ngFor="
-                          let _ of [].constructor(column_count);
-                          let i = index
-                        "
-                        [ngClass]="getStorageClass(storage_data?.[1]?.[i])"
-                      ></td>
-                    </tr>
-                    <tr>
-                      <td
-                        *ngFor="
-                          let _ of [].constructor(column_count + 1);
-                          let i = index
-                        "
-                      >
-                        <i
-                          *ngIf="i + 1 === shuttle_col[0]"
-                          [ngClass]="getErrorLightClass(shuttle_col_state[0])"
-                          class="icon-circle ia-shuttle-icon"
-                        ></i>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td
-                        *ngFor="
-                          let _ of [].constructor(column_count);
-                          let i = index
-                        "
-                        [ngClass]="getStorageClass(storage_data?.[0]?.[i])"
-                      ></td>
-                    </tr>
-                  </tbody>
-                </table>
+  <div class="container-fluid mt-3">
+    <div class="form-row">
+      <div class="col-md-12 col-lg-12 pb-2 ia-rightcardheight ia-scrollerbar">
+        <div class="card" style="overflow: auto; min-height: 100%">
+          <div class="card-body">
+            <div class="mt-4 mb-4">
+              <div>
+                <div class="table-responsive">
+                  <table
+                    class="table-border ia-storageTable"
+                    style="table-layout: fixed"
+                  >
+                    <thead>
+                      <tr>
+                        <th
+                          style="
+                            border-left: 2px solid transparent;
+                            border-top: 2px solid transparent;
+                            border-right: 2px solid transparent;
+                          "
+                        ></th>
+                        <th style="border-top: 2px solid transparent"></th>
+                        <th
+                          *ngFor="
+                            let _ of [].constructor(column_count);
+                            let i = index
+                          "
+                        >
+                          {{ i + 1 }}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td rowspan="3">
+                          <i
+                            *ngIf="shuttle_col[4] === 0"
+                            [ngClass]="getErrorLightClass(shuttle_col_state[4])"
+                            class="icon-circle ia-shuttle-icon"
+                          ></i>
+                        </td>
+                        <td></td>
+                        <td
+                          *ngFor="
+                            let _ of [].constructor(column_count);
+                            let i = index
+                          "
+                          [ngClass]="getStorageClass(storage_data?.[9]?.[i])"
+                        ></td>
+                      </tr>
+                      <tr>
+                        <td
+                          *ngFor="
+                            let _ of [].constructor(column_count + 1);
+                            let i = index
+                          "
+                        >
+                          <i
+                            *ngIf="i + 1 === shuttle_col[4]"
+                            [ngClass]="getErrorLightClass(shuttle_col_state[4])"
+                            class="icon-circle ia-shuttle-icon"
+                          ></i>
+                        </td>
+                      </tr>
+                      <tr class="ia-storage-divider">
+                        <td></td>
+                        <td
+                          *ngFor="
+                            let _ of [].constructor(column_count);
+                            let i = index
+                          "
+                          [ngClass]="getStorageClass(storage_data?.[8]?.[i])"
+                        ></td>
+                      </tr>
+                      <tr>
+                        <td
+                          rowspan="3"
+                          class="ia-storage-left-transparent"
+                        ></td>
+                        <td></td>
+                        <td
+                          *ngFor="
+                            let _ of [].constructor(column_count);
+                            let i = index
+                          "
+                          [ngClass]="getStorageClass(storage_data?.[7]?.[i])"
+                        ></td>
+                      </tr>
+                      <tr>
+                        <td
+                          *ngFor="
+                            let _ of [].constructor(column_count + 1);
+                            let i = index
+                          "
+                        >
+                          <i
+                            *ngIf="i + 1 === shuttle_col[3]"
+                            [ngClass]="getErrorLightClass(shuttle_col_state[3])"
+                            class="icon-circle ia-shuttle-icon"
+                          ></i>
+                        </td>
+                      </tr>
+                      <tr class="ia-storage-divider">
+                        <td></td>
+                        <td
+                          *ngFor="
+                            let _ of [].constructor(column_count);
+                            let i = index
+                          "
+                          [ngClass]="getStorageClass(storage_data?.[6]?.[i])"
+                        ></td>
+                      </tr>
+                      <tr>
+                        <td rowspan="3">
+                          <i
+                            *ngIf="shuttle_col[2] === 0"
+                            [ngClass]="getErrorLightClass(shuttle_col_state[2])"
+                            class="icon-circle ia-shuttle-icon"
+                          ></i>
+                        </td>
+                        <td></td>
+                        <td
+                          *ngFor="
+                            let _ of [].constructor(column_count);
+                            let i = index
+                          "
+                          [ngClass]="getStorageClass(storage_data?.[5]?.[i])"
+                        ></td>
+                      </tr>
+                      <tr>
+                        <td
+                          *ngFor="
+                            let _ of [].constructor(column_count + 1);
+                            let i = index
+                          "
+                        >
+                          <i
+                            *ngIf="i + 1 === shuttle_col[2]"
+                            [ngClass]="getErrorLightClass(shuttle_col_state[2])"
+                            class="icon-circle ia-shuttle-icon"
+                          ></i>
+                        </td>
+                      </tr>
+                      <tr class="ia-storage-divider">
+                        <td></td>
+                        <td
+                          *ngFor="
+                            let _ of [].constructor(column_count);
+                            let i = index
+                          "
+                          [ngClass]="getStorageClass(storage_data?.[4]?.[i])"
+                        ></td>
+                      </tr>
+                      <tr>
+                        <td
+                          rowspan="3"
+                          class="ia-storage-left-transparent"
+                        ></td>
+                        <td></td>
+                        <td
+                          *ngFor="
+                            let _ of [].constructor(column_count);
+                            let i = index
+                          "
+                          [ngClass]="getStorageClass(storage_data?.[3]?.[i])"
+                        ></td>
+                      </tr>
+                      <tr>
+                        <td
+                          *ngFor="
+                            let _ of [].constructor(column_count + 1);
+                            let i = index
+                          "
+                        >
+                          <i
+                            *ngIf="i + 1 === shuttle_col[1]"
+                            [ngClass]="getErrorLightClass(shuttle_col_state[1])"
+                            class="icon-circle ia-shuttle-icon"
+                          ></i>
+                        </td>
+                      </tr>
+                      <tr class="ia-storage-divider">
+                        <td></td>
+                        <td
+                          *ngFor="
+                            let _ of [].constructor(column_count);
+                            let i = index
+                          "
+                          [ngClass]="getStorageClass(storage_data?.[2]?.[i])"
+                        ></td>
+                      </tr>
+                      <tr>
+                        <td rowspan="3">
+                          <i
+                            *ngIf="shuttle_col[0] === 0"
+                            [ngClass]="getErrorLightClass(shuttle_col_state[0])"
+                            class="icon-circle ia-shuttle-icon"
+                          ></i>
+                        </td>
+                        <td></td>
+                        <td
+                          *ngFor="
+                            let _ of [].constructor(column_count);
+                            let i = index
+                          "
+                          [ngClass]="getStorageClass(storage_data?.[1]?.[i])"
+                        ></td>
+                      </tr>
+                      <tr>
+                        <td
+                          *ngFor="
+                            let _ of [].constructor(column_count + 1);
+                            let i = index
+                          "
+                        >
+                          <i
+                            *ngIf="i + 1 === shuttle_col[0]"
+                            [ngClass]="getErrorLightClass(shuttle_col_state[0])"
+                            class="icon-circle ia-shuttle-icon"
+                          ></i>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td
+                          *ngFor="
+                            let _ of [].constructor(column_count);
+                            let i = index
+                          "
+                          [ngClass]="getStorageClass(storage_data?.[0]?.[i])"
+                        ></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- <app-storage-layer-info></app-storage-layer-info> -->
+            <!-- <app-storage-layer-info></app-storage-layer-info> -->
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <!-- <pre>{{storage_data[0]}}</pre> -->
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/popper.min.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/jquery.sticky.js"></script>
+  <script src="/assets/js/main.js"></script>
 </div>
-<!-- <pre>{{storage_data[0]}}</pre> -->
-<script src="/assets/js/jquery-3.3.1.min.js"></script>
-<script src="/assets/js/popper.min.js"></script>
-<script src="/assets/js/bootstrap.min.js"></script>
-<script src="/assets/js/jquery.sticky.js"></script>
-<script src="/assets/js/main.js"></script>

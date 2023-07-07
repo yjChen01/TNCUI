@@ -54,6 +54,9 @@ export class BillQueryComponent  {
       }
       this.data=data_result.bills;
       this.total_line_count=data_result.total_page_count;
+      console.log(data_result.total_page_count);
+      console.log(this.total_line_count);
+
     })
   }
 
@@ -70,5 +73,12 @@ export class BillQueryComponent  {
     console.log(v_page_no);
   }
 
-
+  ClassIdTransfer(v_class_id:number){
+    if(v_class_id>=0){
+      return +v_class_id+1;
+    }
+    else{
+      return '-';
+    }
+  }
 }
