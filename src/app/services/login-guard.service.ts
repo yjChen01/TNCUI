@@ -27,20 +27,20 @@ export class LoginGuardService {
       user_mail: '',
     };
     this.http
-      // .post<any>(`${environment.api}/Login`, body, options)
-      // .subscribe((data_result) => {
-      //   console.log(data_result);
-      //   if (data_result==1) {
-      //     localStorage.setItem('username',username);
-      //     localStorage.setItem(this.tokenKey, 'fqoewifhoqeuifhoiudhvo');
-      //     this.router.navigate(['/SystemStatus']);
-      //   }
-      //   else{
-      //     alert('user not found, please register');
-      //     this.router.navigate(['/Register']);
-      //   }
-      // });
-      this.router.navigate(['/SystemStatus']);
+      .post<any>(`${environment.api}/Login`, body, options)
+      .subscribe((data_result) => {
+        console.log(data_result);
+        if (data_result==1) {
+          localStorage.setItem('username',username);
+          localStorage.setItem(this.tokenKey, 'fqoewifhoqeuifhoiudhvo');
+          this.router.navigate(['/SystemStatus']);
+        }
+        else{
+          alert('user not found, please register');
+          this.router.navigate(['/Register']);
+        }
+      });
+      // this.router.navigate(['/SystemStatus']);
 
   }
 
