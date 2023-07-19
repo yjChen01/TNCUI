@@ -1,3 +1,4 @@
+import { LayerInfo } from './../eqstatus';
 import { UniverseFunc } from './../universe-func';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
@@ -14,10 +15,14 @@ export class ManualMoveConfrimDialogComponent {
   get EQ_name() {
     return this.data.EQ_name;
   }
-  get Row(){
+  get Row() {
+    if (this.data.Row == -1)
+      this.show_other = '指定至儲位外';
     return this.data.Row;
   }
-  get Layer(){
+  get Layer() {
+    if (this.data.Row == -1)
+      this.show_other = '指定至儲位外';
     return this.data.Layer;
   }
   constructor(
@@ -26,7 +31,7 @@ export class ManualMoveConfrimDialogComponent {
     public dialog: MatDialog
   ) {}
 
-  toolfunc:UniverseFunc=new UniverseFunc();
+  toolfunc: UniverseFunc = new UniverseFunc();
 
   confirm_manual_job() {
     let headers = new HttpHeaders({
@@ -55,16 +60,22 @@ export class ManualMoveConfrimDialogComponent {
       .subscribe({
         next: (data_result) => {
           console.log(data_result);
-          if(data_result.is_success==false){
-            alert(this.toolfunc.error_msg_trans(data_result.message,error_type['switch_to_manual_error']));
+          if (data_result.is_success == false) {
+            alert(
+              this.toolfunc.error_msg_trans(
+                data_result.message,
+                error_type['switch_to_manual_error']
+              )
+            );
           }
           this.dialog.closeAll();
         },
-        error:(err)=>{
+        error: (err) => {
           // console.log(err.message);
-          alert('api連線錯誤: \n'+err.message);
+          alert('api連線錯誤: \n' + err.message);
           this.dialog.closeAll();
-        }
+        },
       });
   }
+  show_other: string;
 }

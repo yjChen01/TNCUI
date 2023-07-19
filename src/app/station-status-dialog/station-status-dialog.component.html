@@ -1,15 +1,35 @@
 <h2 mat-dialog-title>指定移動目標位置</h2>
 
-<mat-dialog-content class="post-form">
-  <label class="col-md-6 pt-2 pr-2" style="color: #1C5098; font-weight: bolder">{{
-    EQ_name
-  }}</label>
+<label
+  class="pt-2 pr-2"
+  style="
+    color: #1c5098;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 38px;
+  "
+  >{{ EQ_name }}</label
+>
+<mat-dialog-content class="post-form" style="width: 305px">
+  <div class="form-row d-flex mt-2">
+    <label class="col-md-6 pt-2 pr-2">儲區選擇:</label>
+    <div class="form-group col-md-6">
+      <select class="form-control" (change)="onChange($event.target.value)" #store_pos>
+        <option *ngFor="let opt of store_type_list" [value]="opt.key">
+          {{ opt.value }}
+        </option>
+      </select>
+    </div>
+  </div>
   <div class="form-row d-flex mt-2">
     <label class="col-md-6 pt-2 pr-2">row:</label>
     <div class="form-group col-md-6">
-      <select class="form-control" #row>
+      <select class="form-control"[disabled]="isDisabled" #row>
+        <option [ngValue]="null" [selected]="isDisabled" disabled>--</option>
         <option *ngFor="let _ of [].constructor(5); let i = index" [value]="i">
-          {{ i+1 }}
+          {{ i + 1 }}
         </option>
       </select>
     </div>
@@ -17,22 +37,26 @@
   <div class="form-row d-flex">
     <label class="col-md-6 pt-2 pr-2">layer:</label>
     <div class="form-group col-md-6">
-      <select class="form-control" #layer>
+      <select class="form-control" [disabled]="isDisabled" #layer>
+        <option [ngValue]="null" [selected]="isDisabled" disabled>--</option>
         <option *ngFor="let _ of [].constructor(21); let i = index" [value]="i">
-          {{ i+1 }}
+          {{ i + 1 }}
         </option>
       </select>
     </div>
   </div>
 </mat-dialog-content>
 
-<mat-dialog-actions>
+<mat-dialog-actions
+  style="display: flex; justify-content: center; align-items: center"
+>
   <button
     type="button"
     class="btn btn-ia-blue"
     mat-button
-    (click)="show_comfirm_dialog(EQ_name,row.value,layer.value)"
+    (click)="show_comfirm_dialog(EQ_name, row.value, layer.value, store_pos.value)"
+    style="color: WHITE"
   >
-    執行
+    確認送出
   </button>
 </mat-dialog-actions>
