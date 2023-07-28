@@ -114,7 +114,7 @@ export class StorageStatusComponent implements OnDestroy {
 
     //檢查是否有shuttle在目標樓層，若有則將其row,col,state加入layer_shuttle_array[]中
     for (let i = 0; i < shuttle.length; i++) {
-      if (shuttle[i].layer == this.current_layer) {
+      if (shuttle[i].layer == this.current_layer - 1) {
         // console.log('shuttle:' + i + ';col:' + shuttle[i].column);
 
         layer_shuttle_array.push([
@@ -239,8 +239,12 @@ export class StorageStatusComponent implements OnDestroy {
       if (getstorage_id.length !== 4) {
         alert('輸入格式錯誤');
         return;
-      }
-      else if(Number.isNaN(+getstorage_id[0])||Number.isNaN(+getstorage_id[1])||Number.isNaN(+getstorage_id[2])||Number.isNaN(+getstorage_id[3])){
+      } else if (
+        Number.isNaN(+getstorage_id[0]) ||
+        Number.isNaN(+getstorage_id[1]) ||
+        Number.isNaN(+getstorage_id[2]) ||
+        Number.isNaN(+getstorage_id[3])
+      ) {
         alert('請勿輸入非數字字元');
         return;
       }
